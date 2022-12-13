@@ -1,37 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItem from "./CartItem";
 import Modal from "../UI/Modal/Modal";
+import CartContext from "../../Store/CartContext";
 import "./Cart.css";
 
-const cartElements = [
-  {
-    title: "Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
-
 const Cart = (props) => {
-  let cartItems = cartElements.map((item) => {
+  const CartCtx = useContext(CartContext);
+  let total = 0;
+  let cartItems = CartCtx.products.map((product) => {
+    total = total + product.price * product.quantity;
     return (
       <CartItem
-        image={item.imageUrl}
-        title={item.title}
-        price={item.price}
-        quantity={item.quantity}
+        key={product.id}
+        id={product.id}
+        image={product.imageUrl}
+        title={product.title}
+        price={product.price}
+        quantity={product.quantity}
       ></CartItem>
     );
   });
@@ -61,7 +46,7 @@ const Cart = (props) => {
         <div>{cartItems}</div>
 
         <div className="text-end mt-4">
-          <h2>Total : 100</h2>
+          <h2>Total : {total}</h2>
         </div>
         <div className="text-center mt-5">
           <button className="btn btn-primary">Purchase</button>

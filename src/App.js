@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import NavigationBar from "./Components/Navbar/Navbar";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/Cart/Cart";
+import CartProvider from "./Store/CartProvider";
 import Footer from "./Components/Footer/Footer";
+import "./App.css";
 
 function App() {
   const [cartState, setCartState] = useState(false);
@@ -15,12 +17,12 @@ function App() {
     setCartState(false);
   };
   return (
-    <div className="App" style={{ backgroundColor: "#eed9c4" }}>
+    <CartProvider className="App">
       {cartState && <Cart cartClose={cartCloseHandler}></Cart>}
       <NavigationBar cartClick={cartClickHandler}></NavigationBar>
       <ProductPage></ProductPage>
       <Footer></Footer>
-    </div>
+    </CartProvider>
   );
 }
 
