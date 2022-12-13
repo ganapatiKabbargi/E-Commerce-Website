@@ -5,7 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import CartIcon from "../Cart/CartIcon";
 import "./Navbar.css";
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
+  const cartHandler = () => {
+    props.cartClick();
+  };
   return (
     <header>
       <Navbar
@@ -19,17 +22,20 @@ const NavigationBar = () => {
             E-Commerce Store
           </Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link href="#home" className="me-5 nav-item fs-5 ">
+            <Nav.Link href="#home" className="me-5 nav-item fs-5 text-white">
               Home
             </Nav.Link>
-            <Nav.Link href="#features" className="me-5 nav-item fs-5">
+            <Nav.Link
+              href="#features"
+              className="me-5 nav-item fs-5 text-white"
+            >
               Store
             </Nav.Link>
-            <Nav.Link href="#pricing" className="me-5 nav-item fs-5">
+            <Nav.Link href="#pricing" className="me-5 nav-item fs-5 text-white">
               About
             </Nav.Link>
           </Nav>
-          <button className="button">
+          <button className="button" onClick={cartHandler}>
             <span className="icon">
               <CartIcon />
             </span>
