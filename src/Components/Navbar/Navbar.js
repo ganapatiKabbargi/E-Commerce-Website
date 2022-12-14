@@ -1,23 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import CartIcon from "../Cart/CartIcon";
-import CartContext from "../../Store/CartContext";
+import CartContext from "../../Store/cartContext";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const NavigationBar = (props) => {
+  const cartCtx = useContext(CartContext);
   const cartHandler = () => {
     props.cartClick();
   };
-  const cartCtx = useContext(CartContext);
+
   let quantity = 0;
   cartCtx.products.forEach((product) => {
     quantity = quantity + +product.quantity;
   });
 
   return (
-    <header>
+    <Fragment>
       <Navbar
         // bg="success"
         variant="dark"
@@ -29,18 +31,27 @@ const NavigationBar = (props) => {
             E-Commerce Store
           </Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link href="#home" className="me-5 nav-item fs-5 text-white">
+            <NavLink
+              activeClassName="active"
+              to="/home"
+              className="me-5 nav-item fs-5 "
+            >
               Home
-            </Nav.Link>
-            <Nav.Link
-              href="#features"
-              className="me-5 nav-item fs-5 text-white"
+            </NavLink>
+            <NavLink
+              activeClassName="active"
+              to="/store"
+              className="me-5 nav-item fs-5 "
             >
               Store
-            </Nav.Link>
-            <Nav.Link href="#pricing" className="me-5 nav-item fs-5 text-white">
+            </NavLink>
+            <NavLink
+              activeClassName="active"
+              to="/about"
+              className="me-5 nav-item fs-5 "
+            >
               About
-            </Nav.Link>
+            </NavLink>
           </Nav>
           <button className="button" onClick={cartHandler}>
             <span className="icon">
@@ -50,7 +61,18 @@ const NavigationBar = (props) => {
           </button>
         </Container>
       </Navbar>
-    </header>
+      <div
+        style={{
+          height: "500px",
+          backgroundColor: "#fefefe",
+        }}
+        className="d-flex justify-content-center align-items-center"
+      >
+        <h1 style={{ fontSize: "80px", fontFamily: "brush-script" }}>
+          E-Commerce-Store
+        </h1>
+      </div>
+    </Fragment>
   );
 };
 

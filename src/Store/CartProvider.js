@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CartContext from "./CartContext";
+import CartContext from "./cartContext";
 
 const CartProvider = (props) => {
   const [products, setProducts] = useState([]);
@@ -14,7 +14,6 @@ const CartProvider = (props) => {
     } else {
       setProducts([...products, product]);
     }
-    console.log(cartContext);
   };
 
   const removeItemFromCartHandler = (id) => {

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProductCard from "../ProductCard/ProductCard";
 import Title from "../Title/Title";
+
 import { Button } from "react-bootstrap";
 
 const productsArr = [
@@ -47,18 +48,7 @@ const productsArr = [
 
 function ProductPage() {
   return (
-    <div>
-      <div
-        style={{
-          height: "500px",
-          backgroundColor: "#fefefe",
-        }}
-        className="d-flex justify-content-center align-items-center"
-      >
-        <h1 style={{ fontSize: "80px", fontFamily: "brush-script" }}>
-          E-Commerce-Store
-        </h1>
-      </div>
+    <Fragment>
       <Container>
         <Title>Music collections</Title>
         <Row>
@@ -80,7 +70,7 @@ function ProductPage() {
       <div className="d-flex justify-content-center p-3 mt-4">
         <Button variant="outline-primary">See the cart</Button>
       </div>
-    </div>
+    </Fragment>
   );
 }
 

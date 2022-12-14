@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import CartItem from "./CartItem";
 import Modal from "../UI/Modal/Modal";
-import CartContext from "../../Store/CartContext";
+import CartContext from "../../Store/cartContext";
 import "./Cart.css";
 
 const Cart = (props) => {
@@ -28,7 +28,7 @@ const Cart = (props) => {
     props.cartClose();
   };
   return (
-    <div>
+    <Fragment>
       <Modal onConfirm={backdropHandler} />
       <div className=" cart bg-success p-4 text-white">
         <div className="text-end">
@@ -52,7 +52,7 @@ const Cart = (props) => {
           <button className="btn btn-primary">Purchase</button>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
