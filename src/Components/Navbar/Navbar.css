@@ -6,6 +6,9 @@
   text-decoration: none;
   color: #fff;
 }
+.nav-item:hover {
+  color: rgb(185, 206, 50);
+}
 .icon {
   width: 1.8rem;
   height: 1.3rem;
@@ -30,9 +33,8 @@
   border-radius: 25px;
   font-weight: bold;
 }
-a:hover {
-  color: rgb(185, 206, 50);
-}
+
+a:hover,
 a.active {
   color: rgb(185, 206, 50);
 }

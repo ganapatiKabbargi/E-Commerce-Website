@@ -6,6 +6,7 @@ import Cart from "./Components/Cart/Cart";
 import CartProvider from "./Store/CartProvider";
 import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About";
+import Home from "./Pages/Home";
 
 function App() {
   const [cartState, setCartState] = useState(false);
@@ -20,6 +21,9 @@ function App() {
   return (
     <CartProvider>
       {cartState && <Cart cartClose={cartCloseHandler}></Cart>}
+      <Route path="/home">
+        <Home></Home>
+      </Route>
       <Route path="/about">
         <About></About>
       </Route>
