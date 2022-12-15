@@ -9,9 +9,8 @@ import Title from "../Components/Title/Title";
 const About = () => {
   return (
     <Fragment>
-      <NavigationBar></NavigationBar>
-
       <div>
+        <NavigationBar></NavigationBar>
         <Container>
           <Title>About Us</Title>
           <Row>
