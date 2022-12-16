@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import NavigationBar from "../Components/Navbar/Navbar";
+import Header from "../Components/Navbar/Header";
 import Title from "../Components/Title/Title";
 import Footer from "../Components/Footer/Footer";
 
@@ -35,7 +36,7 @@ const Contact = (props) => {
   return (
     <Fragment>
       <NavigationBar></NavigationBar>
-
+      <Header></Header>
       <Title>Contact Us</Title>
       <div className="d-flex justify-content-center my-5">
         <form

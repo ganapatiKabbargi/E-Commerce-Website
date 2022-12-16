@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import NavigationBar from "../Components/Navbar/Navbar";
+import Header from "../Components/Navbar/Header";
 import Footer from "../Components/Footer/Footer";
 import { BsPlayCircle } from "react-icons/bs";
 import Title from "../Components/Title/Title";
@@ -11,7 +12,7 @@ const Home = () => {
   return (
     <Fragment>
       <NavigationBar></NavigationBar>
-
+      <Header></Header>
       <div className="text-center my-5 p-2 ">
         <button className="btn btn-outline-primary">
           Get Our Latest Album

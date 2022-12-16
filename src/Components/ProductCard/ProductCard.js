@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import CartContext from "../../Store/cartContext";
 import "./ProductCard.css";
 
@@ -25,6 +26,11 @@ function ProductCard(props) {
             Add to cart
           </Button>
         </div>
+        <Link to={"/product_detail/" + props.id}>
+          <button className="btn btn-outline-success w-100 mt-2">
+            Product details
+          </button>
+        </Link>
       </Card.Body>
     </Card>
   );

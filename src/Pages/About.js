@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavigationBar from "../Components/Navbar/Navbar";
+import Header from "../Components/Navbar/Header";
 import Footer from "../Components/Footer/Footer";
 import Title from "../Components/Title/Title";
 
@@ -11,6 +12,7 @@ const About = () => {
     <Fragment>
       <div>
         <NavigationBar></NavigationBar>
+        <Header></Header>
         <Container>
           <Title>About Us</Title>
           <Row>
