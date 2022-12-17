@@ -46,8 +46,22 @@ const CartProvider = (props) => {
       id: "6",
     },
   ];
-
+  const initialToken = localStorage.getItem("token");
   const [products, setProducts] = useState([]);
+  const [token, setToken] = useState(initialToken);
+
+  const isLogedIn = !!token;
+
+  const loginHandler = (token) => {
+    setToken(token);
+    localStorage.setItem("token", token);
+  };
+
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+  };
+
   const addItemToCartHandler = (product) => {
     let idx = products.findIndex((ele) => {
       return ele.id === product.id;
@@ -70,6 +84,10 @@ const CartProvider = (props) => {
   };
 
   const cartContext = {
+    token: token,
+    isLogedIn: isLogedIn,
+    login: loginHandler,
+    logout: logoutHandler,
     productArr: productArr,
     products: products,
     addItem: addItemToCartHandler,

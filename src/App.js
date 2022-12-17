@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NavigationBar from "./Components/Navbar/Navbar";
 import Header from "./Components/Navbar/Header";
@@ -10,9 +10,13 @@ import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import ProductDetail from "./Pages/ProductDetail";
+import Login from "./Pages/Login";
+import CartContext from "./Store/cartContext";
 
 function App() {
   const [cartState, setCartState] = useState(false);
+  const cartCtx = useContext(CartContext);
+  const logedIn = cartCtx.isLogedIn;
 
   const cartClickHandler = () => {
     setCartState(true);
@@ -35,9 +39,9 @@ function App() {
     );
   };
   return (
-    <Switch>
-      <CartProvider>
-        {cartState && <Cart cartClose={cartCloseHandler}></Cart>}
+    <CartProvider>
+      {cartState && <Cart cartClose={cartCloseHandler}></Cart>}
+      <Switch>
         <Route path="/" exact>
           <Redirect to="/store"></Redirect>
         </Route>
@@ -59,8 +63,14 @@ function App() {
         <Route path="/product_detail/:productId">
           <ProductDetail></ProductDetail>
         </Route>
-      </CartProvider>
-    </Switch>
+        <Route path="/login">
+          <Login></Login>
+        </Route>
+        <Route path="*">
+          <Redirect to="/login"></Redirect>
+        </Route>
+      </Switch>
+    </CartProvider>
   );
 }
 
