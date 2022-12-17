@@ -22,10 +22,12 @@ const Cart = (props) => {
   });
 
   const cartCloseHandler = () => {
-    props.cartClose();
+    // props.cartClose();
+    CartCtx.cartClose();
   };
   const backdropHandler = () => {
-    props.cartClose();
+    // props.cartClose();
+    CartCtx.cartClose();
   };
   return (
     <Fragment>

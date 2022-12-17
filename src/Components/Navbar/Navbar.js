@@ -12,7 +12,8 @@ const NavigationBar = (props) => {
   const isLogedIn = cartCtx.isLogedIn;
   const history = useHistory();
   const cartHandler = () => {
-    props.cartClick();
+    // props.cartClick();
+    cartCtx.cartOpen();
   };
 
   const logoutHandler = () => {
@@ -38,42 +39,37 @@ const NavigationBar = (props) => {
             E-Commerce Store
           </Navbar.Brand>
           <Nav className="ms-auto">
-            {isLogedIn && (
-              <NavLink
-                activeClassName="active"
-                to="/home"
-                className="me-5 nav-item fs-5 "
-              >
-                Home
-              </NavLink>
-            )}
-            {isLogedIn && (
-              <NavLink
-                activeClassName="active"
-                to="/store"
-                className="me-5 nav-item fs-5 "
-              >
-                Store
-              </NavLink>
-            )}
-            {isLogedIn && (
-              <NavLink
-                activeClassName="active"
-                to="/about"
-                className="me-5 nav-item fs-5 "
-              >
-                About
-              </NavLink>
-            )}
-            {isLogedIn && (
-              <NavLink
-                activeClassName="active"
-                to="/contact"
-                className="me-5 nav-item fs-5 "
-              >
-                Contact Us
-              </NavLink>
-            )}
+            <NavLink
+              activeClassName="active"
+              to="/home"
+              className="me-5 nav-item fs-5 "
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              activeClassName="active"
+              to="/store"
+              className="me-5 nav-item fs-5 "
+            >
+              Store
+            </NavLink>
+
+            <NavLink
+              activeClassName="active"
+              to="/about"
+              className="me-5 nav-item fs-5 "
+            >
+              About
+            </NavLink>
+
+            <NavLink
+              activeClassName="active"
+              to="/contact"
+              className="me-5 nav-item fs-5 "
+            >
+              Contact Us
+            </NavLink>
             {!isLogedIn && (
               <NavLink
                 activeClassName="active"
@@ -84,6 +80,7 @@ const NavigationBar = (props) => {
               </NavLink>
             )}
           </Nav>
+
           {isLogedIn && (
             <button className="button" onClick={cartHandler}>
               <span className="icon">
@@ -93,9 +90,20 @@ const NavigationBar = (props) => {
             </button>
           )}
           {isLogedIn && (
-            <button className="btn btn-success" onClick={logoutHandler}>
+            <NavLink
+              activeClassName="active"
+              to="/login"
+              className="ms-4 nav-item fs-5 "
+              onClick={logoutHandler}
+            >
               Logout
-            </button>
+            </NavLink>
+            // <button
+            //   className="btn btn-success fs-5 ms-2"
+            //   onClick={logoutHandler}
+            // >
+            //   Logout
+            // </button>
           )}
         </Container>
       </Navbar>

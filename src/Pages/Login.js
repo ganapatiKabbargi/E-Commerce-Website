@@ -1,4 +1,5 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, Fragment } from "react";
+
 import { useHistory } from "react-router-dom";
 import NavigationBar from "../Components/Navbar/Navbar";
 import CartContext from "../Store/cartContext";
@@ -41,7 +42,7 @@ const Login = () => {
       })
       .then((data) => {
         cartCtx.login(data.idToken);
-        history.replace("/");
+        history.replace("/store");
       })
       .catch((err) => {
         alert(err.message);
@@ -49,9 +50,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <Fragment>
       <NavigationBar></NavigationBar>
-      <div className="form-div">
+      <div className="form-div shadow">
         <h2 className="text-center">login</h2>
         <form onSubmit={submitHandler}>
           <div className="control">
@@ -67,7 +68,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

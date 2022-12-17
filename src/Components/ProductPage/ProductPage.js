@@ -7,53 +7,20 @@ import Title from "../Title/Title";
 import CartContext from "../../Store/cartContext";
 
 import { Button } from "react-bootstrap";
-
-// const productArr = [
-//   {
-//     title: "Colors",
-//     price: 100,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-//     id: Math.random() * 100000,
-//   },
-//   {
-//     title: "Black and white Colors",
-//     price: 50,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-//     id: Math.random() * 100000,
-//   },
-//   {
-//     title: "Yellow and Black Color",
-//     price: 70,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-//     id: Math.random() * 100000,
-//   },
-//   {
-//     title: "Blue Color",
-//     price: 100,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-//     id: Math.random() * 100000,
-//   },
-//   {
-//     title: "Colors",
-//     price: 100,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-//     id: Math.random() * 100000,
-//   },
-//   {
-//     title: "Black and white Colors",
-//     price: 50,
-//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-//     id: Math.random() * 100000,
-//   },
-// ];
+import NavigationBar from "../Navbar/Navbar";
+import Header from "../Navbar/Header";
+import Footer from "../Footer/Footer";
 
 function ProductPage(props) {
+  const cartCtx = useContext(CartContext);
   const clickHandler = () => {
-    props.openCart();
+    cartCtx.cartOpen();
   };
   const ctx = useContext(CartContext);
   return (
     <Fragment>
+      <NavigationBar></NavigationBar>
+      <Header></Header>
       <Container>
         <Title>Music collections</Title>
         <Row>
@@ -77,6 +44,7 @@ function ProductPage(props) {
           See the cart
         </Button>
       </div>
+      <Footer></Footer>
     </Fragment>
   );
 }

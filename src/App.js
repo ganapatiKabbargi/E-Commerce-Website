@@ -14,17 +14,8 @@ import Login from "./Pages/Login";
 import CartContext from "./Store/cartContext";
 
 function App() {
-  const [cartState, setCartState] = useState(false);
   const cartCtx = useContext(CartContext);
-  const logedIn = cartCtx.isLogedIn;
-
-  const cartClickHandler = () => {
-    setCartState(true);
-  };
-
-  const cartCloseHandler = () => {
-    setCartState(false);
-  };
+  const isLogedIn = cartCtx.isLogedIn;
 
   const userDetailSubmitHandler = (user) => {
     fetch(
@@ -39,11 +30,11 @@ function App() {
     );
   };
   return (
-    <CartProvider>
-      {cartState && <Cart cartClose={cartCloseHandler}></Cart>}
+    <div>
+      {cartCtx.cart && <Cart></Cart>}
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/store"></Redirect>
+          <Redirect to="/home"></Redirect>
         </Route>
         <Route path="/home">
           <Home></Home>
@@ -54,23 +45,25 @@ function App() {
         <Route path="/contact">
           <Contact userDetail={userDetailSubmitHandler}></Contact>
         </Route>
+
         <Route path="/store">
-          <NavigationBar cartClick={cartClickHandler}></NavigationBar>
-          <Header></Header>
-          <ProductPage openCart={cartClickHandler}></ProductPage>
-          <Footer></Footer>
+          {isLogedIn && <ProductPage></ProductPage>}
+          {!isLogedIn && <Redirect to="/login"></Redirect>}
         </Route>
+
         <Route path="/product_detail/:productId">
           <ProductDetail></ProductDetail>
         </Route>
-        <Route path="/login">
-          <Login></Login>
-        </Route>
+        {!isLogedIn && (
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+        )}
         <Route path="*">
-          <Redirect to="/login"></Redirect>
+          <Redirect to="/"></Redirect>
         </Route>
       </Switch>
-    </CartProvider>
+    </div>
   );
 }
 
