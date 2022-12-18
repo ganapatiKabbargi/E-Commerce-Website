@@ -16,6 +16,8 @@ const Login = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
+    console.log(enteredEmail);
+
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD8LZSBgx3kdlSkRdOGTGLxYs9e1Qopdl0",
       {
@@ -42,6 +44,7 @@ const Login = () => {
       })
       .then((data) => {
         cartCtx.login(data.idToken);
+        cartCtx.addEmail(enteredEmail.replace(/[@.]/g, ""));
         history.replace("/store");
       })
       .catch((err) => {

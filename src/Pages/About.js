@@ -23,7 +23,7 @@ const About = () => {
               ></img>
             </Col>
             <Col xs={6}>
-              <div className="p-2 border fw-bolder">
+              <div className="p-2 mb-4 rounded fw-bolder shadow">
                 <p>
                   band, (from Middle French bande, “troop”), in music, an
                   ensemble of musicians playing chiefly woodwind, brass, and

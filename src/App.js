@@ -1,17 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import NavigationBar from "./Components/Navbar/Navbar";
-import Header from "./Components/Navbar/Header";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/Cart/Cart";
-import CartProvider from "./Store/CartProvider";
-import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import ProductDetail from "./Pages/ProductDetail";
 import Login from "./Pages/Login";
 import CartContext from "./Store/cartContext";
+import Notification from "./Components/UI/Modal/Notification";
 
 function App() {
   const cartCtx = useContext(CartContext);
@@ -31,6 +28,7 @@ function App() {
   };
   return (
     <div>
+      {cartCtx.note && <Notification></Notification>}
       {cartCtx.cart && <Cart></Cart>}
       <Switch>
         <Route path="/" exact>

@@ -7,8 +7,10 @@ import "./ProductCard.css";
 
 function ProductCard(props) {
   const cartCtx = useContext(CartContext);
+  let email = cartCtx.email;
   const clickHandler = () => {
     cartCtx.addItem({ ...props, quantity: 1 });
+    cartCtx.notification(props.title);
   };
   return (
     <Card
@@ -18,6 +20,7 @@ function ProductCard(props) {
       className="shadow mb-5 "
     >
       <Card.Img variant="top" src={props.imageUrl} />
+
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <div className="d-flex justify-content-between">

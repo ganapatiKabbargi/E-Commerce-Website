@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CartContext from "./cartContext";
 
 const CartProvider = (props) => {
@@ -46,10 +46,27 @@ const CartProvider = (props) => {
       id: "6",
     },
   ];
+
   const initialToken = localStorage.getItem("token");
+  const initialMail = localStorage.getItem("email");
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(false);
   const [token, setToken] = useState(initialToken);
+  const [Email, setEmail] = useState(initialMail);
+  const [note, setNote] = useState(false);
+  const [title, setTitle] = useState("");
+
+  const getProducts = async () => {
+    const response = await fetch(
+      `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}`
+    );
+    const data = await response.json();
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const isLogedIn = !!token;
   const loginHandler = (token) => {
@@ -60,6 +77,7 @@ const CartProvider = (props) => {
   const logoutHandler = () => {
     setToken(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
   };
 
   const cartOpenHandler = () => {
@@ -80,6 +98,18 @@ const CartProvider = (props) => {
       setProducts([...products]);
     } else {
       setProducts([...products, product]);
+      fetch(
+        `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}`,
+        {
+          method: "POST",
+          body: JSON.stringify(product),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((response) => {
+        getProducts();
+      });
     }
   };
 
@@ -87,22 +117,56 @@ const CartProvider = (props) => {
     let idx = products.findIndex((ele) => {
       return ele.id === id;
     });
+    let pd = products[idx];
+    let pdid = pd._id;
+    fetch(
+      `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}/${pdid}`,
+      { method: "DELETE" }
+    ).then((response) => {
+      // getProducts();
+    });
+
     products.splice(idx, 1);
     setProducts([...products]);
+  };
+
+  const addEmailHandler = (email) => {
+    setEmail(email);
+    localStorage.setItem("email", email);
+  };
+
+  const purchaseHandler = () => {
+    alert("Thank you for purchasing");
+    setProducts([]);
+  };
+
+  const notificationHandler = (title) => {
+    setNote(true);
+    setTitle(title);
+    const id = setInterval(() => {
+      setNote(false);
+      clearInterval(id);
+    }, 4000);
   };
 
   const cartContext = {
     token: token,
     cart: cart,
     isLogedIn: isLogedIn,
-    login: loginHandler,
-    logout: logoutHandler,
+    email: Email,
     productArr: productArr,
     products: products,
+    note: note,
+    title: title,
+    login: loginHandler,
+    logout: logoutHandler,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     cartOpen: cartOpenHandler,
     cartClose: cartCloseHandler,
+    addEmail: addEmailHandler,
+    purchase: purchaseHandler,
+    notification: notificationHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>

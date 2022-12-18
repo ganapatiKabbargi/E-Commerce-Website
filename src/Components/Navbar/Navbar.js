@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../Store/cartContext";
 import { NavLink, useHistory } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
 import "./Navbar.css";
 
 const NavigationBar = (props) => {
@@ -96,7 +97,7 @@ const NavigationBar = (props) => {
               className="ms-4 nav-item fs-5 "
               onClick={logoutHandler}
             >
-              Logout
+              <FiLogOut></FiLogOut>
             </NavLink>
             // <button
             //   className="btn btn-success fs-5 ms-2"

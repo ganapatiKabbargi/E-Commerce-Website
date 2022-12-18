@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext, Fragment, useState, useEffect } from "react";
 import CartItem from "./CartItem";
 import Modal from "../UI/Modal/Modal";
 import CartContext from "../../Store/cartContext";
@@ -6,6 +6,7 @@ import "./Cart.css";
 
 const Cart = (props) => {
   const CartCtx = useContext(CartContext);
+
   let total = 0;
   let cartItems = CartCtx.products.map((product) => {
     total = total + product.price * product.quantity;
@@ -29,6 +30,10 @@ const Cart = (props) => {
     // props.cartClose();
     CartCtx.cartClose();
   };
+
+  const purchaseHandler = () => {
+    CartCtx.purchase();
+  };
   return (
     <Fragment>
       <Modal onConfirm={backdropHandler} />
@@ -51,7 +56,9 @@ const Cart = (props) => {
           <h2>Total : {total}</h2>
         </div>
         <div className="text-center mt-5">
-          <button className="btn btn-primary">Purchase</button>
+          <button className="btn btn-primary" onClick={purchaseHandler}>
+            Purchase
+          </button>
         </div>
       </div>
     </Fragment>

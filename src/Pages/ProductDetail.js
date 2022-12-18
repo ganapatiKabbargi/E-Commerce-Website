@@ -15,22 +15,26 @@ const ProductDetail = () => {
   const product = ctx.productArr.filter((p) => {
     return p.id === params.productId;
   });
-
+  const [matchedProduct] = product;
   const clickHandler = () => {
-    ctx.addItem({ ...product[0], quantity: 1 });
+    ctx.addItem({ ...matchedProduct, quantity: 1 });
+    ctx.notification(matchedProduct.title);
+  };
+  const purchaseHandler = () => {
+    ctx.purchsae();
   };
 
   return (
     <Fragment>
       {console.log("re")}
       <NavigationBar></NavigationBar>
-      <Container>
+      <Container className="bg-light">
         <Row className="my-5 py-5">
-          <Col xs={6} className=" border-success">
+          <Col xs={6} className="bg-white shadow rounded">
             <div className="">
               <img
-                src={product[0].imageUrl}
-                alt="image"
+                src={matchedProduct.imageUrl}
+                alt="#"
                 className="w-75 my-4"
               ></img>
             </div>
@@ -38,52 +42,62 @@ const ProductDetail = () => {
               <div>
                 {" "}
                 <img
-                  src={product[0].imageUrl}
-                  alt="image"
+                  src={matchedProduct.imageUrl}
+                  alt="@"
                   className="w-50"
                 ></img>
               </div>
               <div>
                 {" "}
                 <img
-                  src={product[0].imageUrl}
-                  alt="image"
+                  src={matchedProduct.imageUrl}
+                  alt="!"
                   className="w-50"
                 ></img>
               </div>
               <div>
                 {" "}
                 <img
-                  src={product[0].imageUrl}
-                  alt="image"
+                  src={matchedProduct.imageUrl}
+                  alt="$"
                   className="w-50"
                 ></img>
               </div>
               <div>
                 {" "}
                 <img
-                  src={product[0].imageUrl}
-                  alt="image"
+                  src={matchedProduct.imageUrl}
+                  alt="&"
                   className="w-50 "
                 ></img>
               </div>
             </div>
-            <button className="btn btn-success w-50" onClick={clickHandler}>
+            <button
+              className="btn btn-success w-50 shadow me-2 "
+              onClick={clickHandler}
+            >
               Add to Cart
+            </button>
+            <button
+              className="btn btn-outline-info  shadow "
+              onClick={purchaseHandler}
+              style={{ width: "300px" }}
+            >
+              Buy Now
             </button>
           </Col>
           <Col xs={6}>
-            <div className="border">
-              <div className="px-5 my-5 border">
-                <h4>{product[0].title}</h4>
+            <div className="">
+              <div className="px-5 py-2 my-5 border shadow rounded bg-white">
+                <h4>{matchedProduct.title}</h4>
                 <h5 className="text-success font-weight-bold">
                   Special Price %
                 </h5>
-                <h3>&#8377; {product[0].price}</h3>
+                <h3>&#8377; {matchedProduct.price}</h3>
               </div>
-              <div className="px-5  my-5 border ">
+              <div className="px-5 py-2 my-5 border shadow rounded  bg-white">
                 <h3 className="text-primary">Available Offers</h3>
-                <p>Special PriceGet at flat ₹{product[0].price}T&C</p>
+                <p>Special PriceGet at flat ₹{matchedProduct.price}T&C</p>
                 <p>
                   Partner OfferSign up for Flipkart Pay Later and get Flipkart
                   Gift Card worth up to ₹500*Know More
@@ -97,29 +111,14 @@ const ProductDetail = () => {
                   Transactions, up to ₹1,250 on orders of ₹5,000 and aboveT&C
                 </p>
               </div>
-              <div className="px-5  my-5 border d-flex justify-content-between align-items-center">
-                <h3 className="text-primary">Ratings and reviews</h3>
-                <div
-                  className=" text-white rounded p-2 mt-1 w-25"
-                  style={{ backgroundColor: "#00d100" }}
-                >
-                  {" "}
-                  <BsFillStarFill size="20px" className="mx-1"></BsFillStarFill>
-                  <BsFillStarFill size="20px" className="mx-1"></BsFillStarFill>
-                  <BsFillStarFill size="20px" className="mx-1"></BsFillStarFill>
-                  <BsFillStarFill size="20px" className="mx-1"></BsFillStarFill>
-                </div>
-              </div>
-              <div className="my-4">
-                <div className="d-flex justify-content-around align-items-center">
+              <div className="shadow py-1 rounded  bg-white">
+                <div className="px-5  my-5  d-flex justify-content-between align-items-center ">
+                  <h3 className="text-primary">Ratings and reviews</h3>
                   <div
-                    className=" text-white rounded p-2 mt-1 w-25 "
+                    className=" text-white rounded p-2 mt-1 w-25"
                     style={{ backgroundColor: "#00d100" }}
                   >
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
+                    {" "}
                     <BsFillStarFill
                       size="20px"
                       className="mx-1"
@@ -137,61 +136,90 @@ const ProductDetail = () => {
                       className="mx-1"
                     ></BsFillStarFill>
                   </div>
-                  <span className="fs-5">Very Good Product</span>
                 </div>
-                <div className="my-2 ms-5">
-                  <img
-                    src={product[0].imageUrl}
-                    alt="image"
-                    style={{ width: "60px", marginLeft: "30px" }}
-                  ></img>
-                  <img
-                    src={product[0].imageUrl}
-                    alt="image"
-                    style={{ width: "60px", marginLeft: "30px" }}
-                  ></img>
-                </div>
-              </div>
-              <div className="my-4">
-                <div className="d-flex justify-content-around align-items-center">
-                  <div
-                    className=" text-white rounded p-2 mt-1 w-25 "
-                    style={{ backgroundColor: "#00d100" }}
-                  >
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
-                    <BsFillStarFill
-                      size="20px"
-                      className="mx-1"
-                    ></BsFillStarFill>
+                <div className="my-4">
+                  <div className="d-flex justify-content-around align-items-center">
+                    <div
+                      className=" text-white rounded p-2 mt-1 w-25 "
+                      style={{ backgroundColor: "#00d100" }}
+                    >
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                    </div>
+                    <span className="fs-5">Very Good Product</span>
                   </div>
-                  <span className="fs-5">Very Good Product</span>
+                  <div className="my-2 ms-5">
+                    <img
+                      src={matchedProduct.imageUrl}
+                      alt="*"
+                      style={{ width: "60px", marginLeft: "30px" }}
+                    ></img>
+                    <img
+                      src={matchedProduct.imageUrl}
+                      alt="^"
+                      style={{ width: "60px", marginLeft: "30px" }}
+                    ></img>
+                  </div>
                 </div>
-                <div className="my-2 ms-5">
-                  <img
-                    src={product[0].imageUrl}
-                    alt="image"
-                    style={{ width: "60px", marginLeft: "30px" }}
-                  ></img>
-                  <img
-                    src={product[0].imageUrl}
-                    alt="image"
-                    style={{ width: "60px", marginLeft: "30px" }}
-                  ></img>
+                <div className="my-4">
+                  <div className="d-flex justify-content-around align-items-center">
+                    <div
+                      className=" text-white rounded p-2 mt-1 w-25 "
+                      style={{ backgroundColor: "#00d100" }}
+                    >
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                      <BsFillStarFill
+                        size="20px"
+                        className="mx-1"
+                      ></BsFillStarFill>
+                    </div>
+                    <span className="fs-5">Very Good Product</span>
+                  </div>
+                  <div className="my-2 ms-5">
+                    <img
+                      src={matchedProduct.imageUrl}
+                      alt="("
+                      style={{ width: "60px", marginLeft: "30px" }}
+                    ></img>
+                    <img
+                      src={matchedProduct.imageUrl}
+                      alt=")"
+                      style={{ width: "60px", marginLeft: "30px" }}
+                    ></img>
+                  </div>
                 </div>
               </div>
             </div>
