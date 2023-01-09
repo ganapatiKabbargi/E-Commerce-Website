@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,26 +7,33 @@ import NavigationBar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import CartContext from "../Store/cartContext";
 import { BsFillStarFill } from "react-icons/bs";
+import { FaCartPlus } from "react-icons/fa";
 
 const ProductDetail = () => {
   const ctx = useContext(CartContext);
   const params = useParams();
+  const history = useHistory();
 
   const product = ctx.productArr.filter((p) => {
     return p.id === params.productId;
   });
   const [matchedProduct] = product;
+
   const clickHandler = () => {
     ctx.addItem({ ...matchedProduct, quantity: 1 });
     ctx.notification(matchedProduct.title);
   };
+
   const purchaseHandler = () => {
-    ctx.purchsae();
+    ctx.purchaseProduct();
+  };
+
+  const closePageHandler = () => {
+    history.push("/store");
   };
 
   return (
     <Fragment>
-      {console.log("re")}
       <NavigationBar></NavigationBar>
       <Container className="bg-light">
         <Row className="my-5 py-5">
@@ -73,23 +80,29 @@ const ProductDetail = () => {
               </div>
             </div>
             <button
-              className="btn btn-success w-50 shadow me-2 "
+              className="btn w-50 shadow me-2 text-light fw-bold "
+              style={{ backgroundColor: "#16b915" }}
               onClick={clickHandler}
             >
-              Add to Cart
+              Add to Cart <FaCartPlus />
             </button>
             <button
-              className="btn btn-outline-info  shadow "
+              className="btn  shadow text-light fw-bold"
               onClick={purchaseHandler}
-              style={{ width: "300px" }}
+              style={{ width: "300px", backgroundColor: "#ff1d00" }}
             >
               Buy Now
             </button>
           </Col>
           <Col xs={6}>
             <div className="">
+              <div className="d-flex justify-content-end">
+                <button className="btn fs-5 fw-bold" onClick={closePageHandler}>
+                  X
+                </button>
+              </div>
               <div className="px-5 py-2 my-5 border shadow rounded bg-white">
-                <h4>{matchedProduct.title}</h4>
+                <h4 style={{ color: "#ff2323" }}>{matchedProduct.title}</h4>
                 <h5 className="text-success font-weight-bold">
                   Special Price %
                 </h5>

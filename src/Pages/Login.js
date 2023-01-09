@@ -1,5 +1,5 @@
 import React, { useContext, useRef, Fragment } from "react";
-
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import NavigationBar from "../Components/Navbar/Navbar";
 import CartContext from "../Store/cartContext";
@@ -13,49 +13,47 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
     console.log(enteredEmail);
 
-    fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD8LZSBgx3kdlSkRdOGTGLxYs9e1Qopdl0",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: enteredEmail,
-          password: enteredPassword,
-          returnSecureToken: true,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+    const loginAuthentication = async () => {
+      try {
+        const response = await axios.post(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDJGXTQIbPZJBDGfZoc5fP6lNVi8DOUE2M",
+          {
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }
+        );
+        if (response.status === 200) {
+          const data = await response.data;
+          console.log(data);
+          cartCtx.login(data.idToken);
+          cartCtx.addEmail(enteredEmail.replace(/[@.]/g, ""));
+          history.replace("/store");
         } else {
-          response.json().then((data) => {
-            let errorMessage = data.error.message;
-            throw new Error(errorMessage);
-          });
+          let errorMessage = "authentication failed";
+          throw new Error(errorMessage);
         }
-      })
-      .then((data) => {
-        cartCtx.login(data.idToken);
-        cartCtx.addEmail(enteredEmail.replace(/[@.]/g, ""));
-        history.replace("/store");
-      })
-      .catch((err) => {
+      } catch (err) {
         alert(err.message);
-      });
+      }
+    };
+
+    loginAuthentication();
   };
 
   return (
     <Fragment>
       <NavigationBar></NavigationBar>
-      <div className="form-div shadow">
+      <div
+        className="form-div shadow"
+        style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
+      >
         <h2 className="text-center">login</h2>
         <form onSubmit={submitHandler}>
           <div className="control">

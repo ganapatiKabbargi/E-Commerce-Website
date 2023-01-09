@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { BsYoutube, BsSpotify, BsFacebook } from "react-icons/bs";
-import {} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -13,13 +12,13 @@ const Footer = () => {
           className="d-flex justify-content-between align-item-center "
           style={{ width: "300px" }}
         >
-          <a href="#" className="text-white">
+          <a href="#youtube" className="text-white">
             <BsYoutube size="30px" />
           </a>
-          <a href="#" className="text-white">
+          <a href="#spotify" className="text-white">
             <BsSpotify size="30px" />
           </a>
-          <a href="#" className="text-white">
+          <a href="#facebook" className="text-white">
             <BsFacebook size="30px" />
           </a>
         </div>

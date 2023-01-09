@@ -9,27 +9,22 @@ import ProductDetail from "./Pages/ProductDetail";
 import Login from "./Pages/Login";
 import CartContext from "./Store/cartContext";
 import Notification from "./Components/UI/Modal/Notification";
+import axios from "axios";
 
 function App() {
   const cartCtx = useContext(CartContext);
   const isLogedIn = cartCtx.isLogedIn;
 
   const userDetailSubmitHandler = (user) => {
-    fetch(
+    axios.post(
       "https://react-http-practice-8c294-default-rtdb.firebaseio.com/userDetails.json",
-      {
-        method: "POST",
-        body: JSON.stringify(user),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      user
     );
   };
   return (
     <div>
       {cartCtx.note && <Notification></Notification>}
-      {cartCtx.cart && <Cart></Cart>}
+      {cartCtx.cart && isLogedIn && <Cart></Cart>}
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home"></Redirect>

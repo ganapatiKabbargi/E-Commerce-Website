@@ -1,49 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CartContext from "./cartContext";
+import axios from "axios";
 
 const CartProvider = (props) => {
   const productArr = [
     {
-      title: "Colors",
-      price: 100,
+      title: "T-Shirt",
+      price: 599,
       imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       id: "1",
     },
     {
-      title: "Black and white Colors",
-      price: 50,
+      title: "Shoes",
+      price: 999,
       imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
       id: "2",
     },
     {
-      title: "Yellow and Black Color",
-      price: 70,
+      title: "Coffee Cup",
+      price: 399,
       imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+        "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGNvZmZlZSUyMG11Z3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
       id: "3",
     },
     {
-      title: "Blue Color",
-      price: 100,
+      title: "HeadPhones",
+      price: 2999,
       imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhZHBob25lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
       id: "4",
-    },
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      id: "5",
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      id: "6",
     },
   ];
 
@@ -56,19 +43,96 @@ const CartProvider = (props) => {
   const [note, setNote] = useState(false);
   const [title, setTitle] = useState("");
 
-  const getProducts = async () => {
-    const response = await fetch(
-      `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}`
-    );
-    const data = await response.json();
-    setProducts(data);
-  };
+  const isLogedIn = !!token;
 
-  useEffect(() => {
-    getProducts();
+  const getProducts = useCallback(async (email) => {
+    const response = await axios.get(
+      `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${email}.json`
+    );
+    const data = await response.data;
+    let products = [];
+    for (let key in data) {
+      products.push({ ...data[key], uId: key });
+    }
+    setProducts(products);
+    console.log(products);
   }, []);
 
-  const isLogedIn = !!token;
+  useEffect(() => {
+    getProducts(Email);
+  }, [getProducts]);
+
+  const addItemToCartHandler = async (product) => {
+    let idx = products.findIndex((ele) => {
+      return ele.id === product.id;
+    });
+    let existingProduct = products[idx];
+
+    if (existingProduct) {
+      let pdid = existingProduct.uId;
+      console.log(existingProduct);
+      existingProduct.quantity = existingProduct.quantity + 1;
+      let updatedProduct = { ...existingProduct };
+      console.log(updatedProduct);
+
+      const response = await axios.put(
+        `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${Email}/${pdid}.json`,
+        existingProduct
+      );
+      if (response.status === 200) {
+        getProducts(Email);
+      }
+    } else {
+      const response = await axios.post(
+        `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${Email}.json`,
+        product
+      );
+      if (response.status === 200) {
+        getProducts(Email);
+      }
+    }
+  };
+
+  const removeItemFromCartHandler = async (id) => {
+    let idx = products.findIndex((ele) => {
+      return ele.id === id;
+    });
+    let pd = products[idx];
+    let pdid = pd.uId;
+    if (pd.quantity === 1) {
+      const response = await axios.delete(
+        `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${Email}/${pdid}.json`
+      );
+      if (response.status === 200) {
+        getProducts(Email);
+      }
+    } else {
+      pd.quantity = pd.quantity - 1;
+      const response = await axios.put(
+        `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${Email}/${pdid}.json`,
+        pd
+      );
+      if (response.status === 200) {
+        getProducts(Email);
+      }
+    }
+  };
+
+  const removeFromCartHandler = async (id) => {
+    let idx = products.findIndex((ele) => {
+      return ele.id === id;
+    });
+    let pd = products[idx];
+    let pdid = pd.uId;
+
+    const response = await axios.delete(
+      `https://e-commerce-57454-default-rtdb.firebaseio.com/cart${Email}/${pdid}.json`
+    );
+    if (response.status === 200) {
+      getProducts(Email);
+    }
+  };
+
   const loginHandler = (token) => {
     setToken(token);
     localStorage.setItem("token", token);
@@ -80,54 +144,12 @@ const CartProvider = (props) => {
     localStorage.removeItem("email");
   };
 
-  const cartOpenHandler = () => {
+  const showCartHandler = () => {
     setCart(true);
   };
 
-  const cartCloseHandler = () => {
+  const hideCartHandler = () => {
     setCart(false);
-  };
-
-  const addItemToCartHandler = (product) => {
-    let idx = products.findIndex((ele) => {
-      return ele.id === product.id;
-    });
-    let existingProduct = products[idx];
-    if (existingProduct) {
-      existingProduct.quantity = existingProduct.quantity + 1;
-      setProducts([...products]);
-    } else {
-      setProducts([...products, product]);
-      fetch(
-        `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}`,
-        {
-          method: "POST",
-          body: JSON.stringify(product),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((response) => {
-        getProducts();
-      });
-    }
-  };
-
-  const removeItemFromCartHandler = (id) => {
-    let idx = products.findIndex((ele) => {
-      return ele.id === id;
-    });
-    let pd = products[idx];
-    let pdid = pd._id;
-    fetch(
-      `https://crudcrud.com/api/8ad0f1c6194a4d94815fe89a3e903c77/cart${Email}/${pdid}`,
-      { method: "DELETE" }
-    ).then((response) => {
-      // getProducts();
-    });
-
-    products.splice(idx, 1);
-    setProducts([...products]);
   };
 
   const addEmailHandler = (email) => {
@@ -135,7 +157,7 @@ const CartProvider = (props) => {
     localStorage.setItem("email", email);
   };
 
-  const purchaseHandler = () => {
+  const purchaseProductHandler = () => {
     alert("Thank you for purchasing");
     setProducts([]);
   };
@@ -147,6 +169,10 @@ const CartProvider = (props) => {
       setNote(false);
       clearInterval(id);
     }, 4000);
+  };
+
+  const fetchProductHandler = (e) => {
+    getProducts(e);
   };
 
   const cartContext = {
@@ -162,10 +188,12 @@ const CartProvider = (props) => {
     logout: logoutHandler,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
-    cartOpen: cartOpenHandler,
-    cartClose: cartCloseHandler,
+    removeFromCart: removeFromCartHandler,
+    fetchProduct: fetchProductHandler,
+    showCart: showCartHandler,
+    hideCart: hideCartHandler,
     addEmail: addEmailHandler,
-    purchase: purchaseHandler,
+    purchaseProduct: purchaseProductHandler,
     notification: notificationHandler,
   };
   return (

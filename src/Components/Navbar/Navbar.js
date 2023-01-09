@@ -10,11 +10,11 @@ import "./Navbar.css";
 
 const NavigationBar = (props) => {
   const cartCtx = useContext(CartContext);
-  const isLogedIn = cartCtx.isLogedIn;
   const history = useHistory();
+  const isLogedIn = cartCtx.isLogedIn;
+
   const cartHandler = () => {
-    // props.cartClick();
-    cartCtx.cartOpen();
+    cartCtx.showCart();
   };
 
   const logoutHandler = () => {
@@ -30,10 +30,10 @@ const NavigationBar = (props) => {
   return (
     <Fragment>
       <Navbar
-        // bg="success"
         variant="dark"
-        className="p-2 shadow   bg-success"
+        className="p-2 shadow   "
         fixed="top"
+        style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
       >
         <Container>
           <Navbar.Brand href="#home" className="fs-2">
@@ -99,12 +99,6 @@ const NavigationBar = (props) => {
             >
               <FiLogOut></FiLogOut>
             </NavLink>
-            // <button
-            //   className="btn btn-success fs-5 ms-2"
-            //   onClick={logoutHandler}
-            // >
-            //   Logout
-            // </button>
           )}
         </Container>
       </Navbar>
