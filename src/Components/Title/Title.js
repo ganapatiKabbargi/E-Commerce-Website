@@ -7,7 +7,8 @@ const Title = (props) => {
       style={{
         width: "300px",
         borderLeft: "5px solid red",
-        backgroundColor: "#90ee90",
+        // backgroundColor: "#90ee90",
+        backgroundColor: "rgba(17, 24, 39, 1)",
       }}
     >
       {props.children}

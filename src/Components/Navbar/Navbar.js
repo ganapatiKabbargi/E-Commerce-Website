@@ -34,6 +34,7 @@ const NavigationBar = (props) => {
         className="p-2 shadow   "
         fixed="top"
         style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
+        // style={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
       >
         <Container>
           <Navbar.Brand href="#home" className="fs-2">

@@ -17,9 +17,9 @@ function ProductPage(props) {
   };
   const ctx = useContext(CartContext);
 
-  useEffect(() => {
-    cartCtx.fetchProduct(email);
-  }, []);
+  // useEffect(() => {
+  //   cartCtx.fetchProduct(email);
+  // }, []);
 
   return (
     <Fragment>

@@ -40,8 +40,10 @@ const Cart = (props) => {
       <Modal onConfirm={backdropHandler} />
 
       <div
-        className=" cart p-4 text-white"
-        style={{ background: "linear-gradient(to top right , #ffe000,#799f0c" }}
+        className={CartCtx.cart ? "cart p-4 text-white" : "hide"}
+        style={{
+          background: "linear-gradient(to top right , #ffe000,#799f0c",
+        }}
       >
         <div className="d-flex justify-content-between">
           <em className="fs-4 fw-bold">Welcome</em>
@@ -77,6 +79,8 @@ const Cart = (props) => {
               className="border border-2 p-2 rounded shadow"
               style={{
                 background: "linear-gradient(to right , #283c86,#45a247",
+                height: "340px",
+                overflow: "scroll",
               }}
             >
               {cartItems}

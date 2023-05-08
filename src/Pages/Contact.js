@@ -42,7 +42,11 @@ const Contact = (props) => {
         <form
           onSubmit={submitHandler}
           className="shadow  rounded-4 p-4 "
-          style={{ width: "600px", backgroundColor: "#90ee90" }}
+          style={{
+            width: "600px",
+            // backgroundColor: "rgba(17, 24, 39, 1)",
+            backgroundColor: "#90ee90",
+          }}
         >
           <div className="row mb-3 d-flex justify-content-center ">
             <div className="col-xs-6">

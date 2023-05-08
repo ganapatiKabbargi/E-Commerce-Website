@@ -9,11 +9,16 @@ import ProductDetail from "./Pages/ProductDetail";
 import Login from "./Pages/Login";
 import CartContext from "./Store/cartContext";
 import Notification from "./Components/UI/Modal/Notification";
+import ErrorModal from "./Components/UI/Modal/ErrorModal";
 import axios from "axios";
+import NavigationBar from "./Components/Navbar/Navbar";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Modal from "./Components/UI/Modal/Modal";
 
 function App() {
   const cartCtx = useContext(CartContext);
   const isLogedIn = cartCtx.isLogedIn;
+  const history = useHistory();
 
   const userDetailSubmitHandler = (user) => {
     axios.post(
@@ -21,13 +26,17 @@ function App() {
       user
     );
   };
+
+  const errorHandler = () => {
+    history.push("/login");
+  };
   return (
     <div>
       {cartCtx.note && <Notification></Notification>}
       {cartCtx.cart && isLogedIn && <Cart></Cart>}
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/home"></Redirect>
+          <Redirect to="/login"></Redirect>
         </Route>
         <Route path="/home">
           <Home></Home>
@@ -39,9 +48,22 @@ function App() {
           <Contact userDetail={userDetailSubmitHandler}></Contact>
         </Route>
 
-        <Route path="/store">
+        {/* <Route path="/store">
           {isLogedIn && <ProductPage></ProductPage>}
           {!isLogedIn && <Redirect to="/login"></Redirect>}
+        </Route> */}
+        <Route path="/store">
+          {isLogedIn && <ProductPage></ProductPage>}
+          {!isLogedIn && (
+            <React.Fragment>
+              <NavigationBar />
+              {/* <Modal /> */}
+              <ErrorModal
+                message="Authentication Required"
+                errorHandler={errorHandler}
+              />
+            </React.Fragment>
+          )}
         </Route>
 
         <Route path="/product_detail/:productId">

@@ -6,6 +6,8 @@ const Header = () => {
       style={{
         height: "400px",
         backgroundColor: "#90ee90",
+        // backgroundColor: "rgba(17, 24, 39, 1)",
+        color: "white",
       }}
       className="d-flex justify-content-center align-items-center pt-5"
     >

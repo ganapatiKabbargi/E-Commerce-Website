@@ -4,7 +4,11 @@ import { BsYoutube, BsSpotify, BsFacebook } from "react-icons/bs";
 const Footer = () => {
   return (
     <Fragment>
-      <div className="d-flex justify-content-between align-item-center py-3 px-5 mt-3 bg-success text-white">
+      <div
+        className="d-flex justify-content-between align-item-center py-3 px-5 mt-3  text-white"
+        // style={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
+        style={{ backgroundColor: "#90ee90" }}
+      >
         <div className="d-flex justify-content-between align-item-center">
           <h3>E-Commerce-Store</h3> &copy; All rights reserved
         </div>
