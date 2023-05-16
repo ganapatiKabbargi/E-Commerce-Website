@@ -1,0 +1,86 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+.container {
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+.orderSummary {
+  padding: 20px;
+}
+.orderSummary h5 {
+  color: #dcae34;
+  font-weight: bold;
+}
+.amountDetail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.amountDescription {
+  font-weight: bold;
+}
+form label {
+  display: block;
+  font-weight: bold;
+}
+form input {
+  width: 68%;
+  padding: 2px 5px;
+}
+form textarea {
+  width: 80%;
+  padding: 2px 5px;
+}
+.estimateBtn {
+  border: 2px solid grey;
+  background-color: white;
+  font-weight: bold;
+  color: grey;
+  width: 100%;
+  margin: 10px 0px;
+  padding: 10px 20px;
+}
+.redeemBtn {
+  background-color: rgb(255, 196, 0);
+  color: white;
+  border: none;
+  padding: 4px 10px;
+}
+.checkout_container {
+  background-color: lightGrey;
+  padding: 10px;
+}
+.grandTotal {
+  display: flex;
+  justify-content: space-between;
+}
+.grandTotal span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.checkout {
+  background-color: rgb(224, 195, 85);
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 20px;
+}
+.shopping {
+  background-color: rgb(134, 165, 165);
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 20px;
+}

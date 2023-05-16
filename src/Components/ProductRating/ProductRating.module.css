@@ -1,0 +1,17 @@
+.rating {
+  width: 50px;
+  display: inline;
+  font-size: 30px;
+}
+.star {
+  font-size: 26px;
+  display: inline;
+}
+.ratings {
+  padding: 0px 26px;
+  color: grey;
+}
+.reviews {
+  padding: 0px 26px;
+  color: grey;
+}

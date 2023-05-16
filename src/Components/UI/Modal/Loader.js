@@ -1,9 +1,9 @@
 import React from "react";
-import "./Loader.css";
+import classes from "./Loader.module.css";
 const Loader = () => {
   return (
-    <div className="loader">
-      <div className="justify-content-center jimu-primary-loading"></div>
+    <div className={classes.loader}>
+      <div className={classes.jimu_primary_loading}></div>
     </div>
   );
 };

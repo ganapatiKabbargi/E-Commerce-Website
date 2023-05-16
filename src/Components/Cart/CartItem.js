@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import CartContext from "../../Store/cartContext";
-import { MdDelete } from "react-icons/md";
-import { useHistory } from "react-router-dom";
+import "./Cart.module.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const CartItem = (props) => {
+const CI = (props) => {
   const cartCtx = useContext(CartContext);
   const history = useHistory();
-
   const removeProductHandler = () => {
     cartCtx.removeItem(props.id);
   };
@@ -16,63 +15,77 @@ const CartItem = (props) => {
   };
 
   const removeProductFromCartHandler = () => {
-    cartCtx.removeFromCart(props.id);
+    if (
+      window.confirm(`Are you sure want to remove ${props.title} from cart`)
+    ) {
+      cartCtx.removeFromCart(props.id);
+    }
   };
-
   const viewProductHandler = () => {
-    cartCtx.cartClose();
     history.push("/product_detail/" + props.id);
   };
-
   return (
-    <div
-      className="d-flex justify-content-between align-items-center  bg-light p-2 text-black rounded mb-1"
-      style={{ borderBottom: "2px solid grey" }}
-    >
+    <div>
       <div
-        className="d-flex align-items-center me-5 "
+        className="p-2 w-100 h-100 position-relative  border-bottom border"
         style={{
-          width: "150px",
-          height: "60px",
+          borderBottom: "2px solid lightgrey",
         }}
-        onClick={viewProductHandler}
       >
-        <img
-          className="rounded"
-          style={{ width: "50px" }}
-          src={props.image}
-          alt="music album"
-        ></img>
-        <div className=" ms-3 ">{props.title}</div>
-      </div>
-      <div className=" d-flex justify-content-around align-items-center w-75">
-        <div>{props.price}</div>
-        <div className="d-flex">
+        <div
+          className="d-inline-block me-0"
+          style={{
+            width: "415px",
+          }}
+        >
+          <img
+            style={{ width: "80px", height: "80px" }}
+            src={props.image}
+            onClick={viewProductHandler}
+          />
+          <div
+            className="d-inline my-0 mx-3 text-secondary "
+            style={{
+              fontFamily: "brush-script",
+            }}
+          >
+            {props.title.slice(0, 33)}
+          </div>
+        </div>
+        <span style={{ marginRight: "130px " }}>{props.price}</span>
+        <div
+          className="d-inline-block"
+          style={{
+            marginRight: " 140px",
+          }}
+        >
           <button
-            className="border me-1 border-2 rounded px-2"
             onClick={removeProductHandler}
+            className="border me-1 border-2 rounded px-2 text-light "
+            style={{ backgroundColor: "rgb(224, 195, 85)" }}
           >
             -
           </button>
-          <div
-            className=" rounded border border-2 text-center text-white"
-            style={{ width: "50px", backgroundColor: "#283c86" }}
-          >
-            {props.quantity}
-          </div>
+          <span className="my-0 mx-2">{props.quantity}</span>
           <button
-            className=" border ms-1 border-2 rounded px-1"
             onClick={addProductHandler}
+            className="border me-1 border-2 rounded px-2 text-light"
+            style={{ backgroundColor: "rgb(224, 195, 85)" }}
           >
             +
           </button>
         </div>
-      </div>
-      <div onClick={removeProductFromCartHandler}>
-        <MdDelete size={"26px"} style={{ color: "red" }} />
+        <span className="fw-bold">{props.quantity * props.price}</span>
+        <button
+          className="btn position-absolute border-0"
+          style={{ top: "0px", right: "0px" }}
+          onClick={removeProductFromCartHandler}
+        >
+          X
+        </button>
       </div>
     </div>
   );
 };
 
-export default CartItem;
+export default CI;

@@ -1,0 +1,76 @@
+.eCart_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.eCart_icon {
+  width: 100px;
+  margin: 40px auto;
+  background-color: grey;
+  padding: 20px;
+  border-radius: 50%;
+  color: white;
+}
+.eCart_p {
+  font-size: 18px;
+  color: #646f79;
+  margin-top: 10px;
+}
+.store_btn {
+  display: inline-block;
+  border: #21c87a;
+  padding: 15px 20px;
+  color: white;
+  background-color: #21c87a;
+  border-radius: 5px;
+}
+.cart_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  height: 90vh;
+
+  z-index: 100;
+}
+.cartD_container {
+  overflow: scroll;
+  width: 68%;
+}
+.cartNav {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  background-color: rgb(224, 195, 85);
+  color: white;
+}
+.cartNav span {
+  font-size: 16px;
+}
+
+.removeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 50%;
+}
+.removeButton:hover {
+  background-color: rgb(255, 140, 0);
+  color: white;
+}
+.grandTotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.redeemBtn {
+  border: none;
+  padding: 4px 10px;
+  background-color: orange;
+  color: white;
+}

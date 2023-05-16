@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import CartContext from "../../../Store/cartContext";
-import "./Notification.css";
+import classes from "./Notification.module.css";
 
 const Notification = () => {
   const cartCtx = useContext(CartContext);
   const title = cartCtx.title;
   return (
-    <div className="noteCard d-flex justify-content-center align-items-center rounded shadow px-3 me-5 text-white ">
-      <span className="fs-5"> {title} added to the cart</span>
+    <div className={classes.noteCard}>
+      <span className={classes.text}>
+        {" "}
+        {title.slice(0, 30)} added to the cart
+      </span>
     </div>
   );
 };

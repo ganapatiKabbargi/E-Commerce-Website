@@ -5,18 +5,20 @@ import axios from "axios";
 const CartProvider = (props) => {
   const productArr = [
     {
-      title: "T-Shirt",
+      title: "Roadster",
       price: 599,
       imageUrl:
         "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       id: "1",
+      colors: "Size XS,S,M,L,XL",
     },
     {
-      title: "Shoes",
+      title: "NIKE Shoe",
       price: 999,
       imageUrl:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNuZWFrZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
       id: "2",
+      colors: "Black,White",
     },
     {
       title: "Coffee Cup",
@@ -24,41 +26,113 @@ const CartProvider = (props) => {
       imageUrl:
         "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGNvZmZlZSUyMG11Z3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
       id: "3",
+      colors: "Black",
     },
     {
-      title: "HeadPhones",
+      title:
+        "boAt Rockerz 551 ANC with Hybrid ANC, 100 HRS Playback, 40mm Drivers & ASAP Charge Bluetooth Headset  (Sage Green, On the Ear)",
       price: 2999,
       imageUrl:
         "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhZHBob25lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
       id: "4",
+      colors: "Black,White",
     },
     {
-      title: "T-Shirt",
+      title: "CHANEL(50ml)",
       price: 599,
       imageUrl:
-        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyZnVtZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
       id: "5",
+      colors: "Black",
     },
     {
-      title: "Shoes",
-      price: 999,
-      imageUrl:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-      id: "6",
-    },
-    {
-      title: "Coffee Cup",
+      title: "Lakmé Forever Matte Liquid Lip Colour ",
       price: 399,
       imageUrl:
-        "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGNvZmZlZSUyMG11Z3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-      id: "7",
+        "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGlwc3RpY2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      id: "6",
+      colors: "All shades",
     },
     {
-      title: "HeadPhones",
+      title: "Ultra Hydrating Moisturizer",
+      price: 499,
+      imageUrl:
+        "https://images.unsplash.com/photo-1629732047847-50219e9c5aef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1vaXN0dXJpemVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      id: "7",
+      colors: "Blue",
+    },
+    {
+      title: "Lakmé Eyeconic Liquid Eyeliner 4.5 ml  (Black)",
+      price: 299,
+      imageUrl:
+        "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZXllbGluZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      id: "8",
+      colors: "Black",
+    },
+    {
+      title: "Smart Watch",
       price: 2999,
       imageUrl:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhZHBob25lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-      id: "8",
+        "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c21hcnQlMjB3YXRjaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      id: "9",
+      colors: "Black",
+    },
+    {
+      title: "APPLE airpodes Pro",
+      price: 3999,
+      imageUrl:
+        "https://images.unsplash.com/photo-1605464315542-bda3e2f4e605?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGVhcnBob25lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      id: "10",
+      colors: "White",
+    },
+    {
+      title:
+        "JBL Flip Essential IPX7 Waterproof 16 W Bluetooth Speaker  (Grey, Stereo Channel)",
+      price: 2499,
+      imageUrl:
+        "https://images.unsplash.com/photo-1589003077984-894e133dabab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNwZWFrZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      id: "11",
+      colors: "Black",
+    },
+    {
+      title: "GoPro Hero11 Waterproof Sports and Action Camera  (Black, 23 MP)",
+      price: 39999,
+      imageUrl:
+        "https://images.unsplash.com/photo-1625420055396-d61b846ce03c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z28lMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      id: "12",
+      colors: "Black",
+    },
+    {
+      title: "Chair",
+      price: 1999,
+      imageUrl:
+        "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      id: "13",
+      colors: "Black,White",
+    },
+    {
+      title: "Sofa",
+      price: 2999,
+      imageUrl:
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      id: "14",
+      colors: "wooden Color",
+    },
+    {
+      title: "Pendant Lamp",
+      price: 3999,
+      imageUrl:
+        "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      id: "15",
+      colors: "Black,White",
+    },
+    {
+      title: "Laptop Table",
+      price: 4999,
+      imageUrl:
+        "https://plus.unsplash.com/premium_photo-1664193968929-d9d9544296e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dGFibGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      id: "16",
+      colors: "Black,Wood color",
     },
   ];
 
@@ -201,7 +275,7 @@ const CartProvider = (props) => {
     const id = setInterval(() => {
       setNote(false);
       clearInterval(id);
-    }, 4000);
+    }, 2000);
   };
 
   const fetchProductHandler = (e) => {

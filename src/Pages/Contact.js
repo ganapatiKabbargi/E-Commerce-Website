@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from "react";
 import NavigationBar from "../Components/Navbar/Navbar";
-import Header from "../Components/Navbar/Header";
-import Title from "../Components/Title/Title";
 import Footer from "../Components/Footer/Footer";
+import classes from "./Contact.module.css";
 
 const Contact = (props) => {
   const [name, setName] = useState("");
@@ -36,71 +35,70 @@ const Contact = (props) => {
   return (
     <Fragment>
       <NavigationBar></NavigationBar>
-      <Header></Header>
-      <Title>Contact Us</Title>
-      <div className="d-flex justify-content-center my-5">
-        <form
-          onSubmit={submitHandler}
-          className="shadow  rounded-4 p-4 "
-          style={{
-            width: "600px",
-            // backgroundColor: "rgba(17, 24, 39, 1)",
-            backgroundColor: "#90ee90",
-          }}
-        >
-          <div className="row mb-3 d-flex justify-content-center ">
-            <div className="col-xs-6">
-              <label htmlFor="name" className="col-sm-2 col-form-label fs-5 ">
-                Name
-              </label>
-              <input
-                type="text"
-                className="form-control py-2"
-                id="name"
-                value={name}
-                onChange={nameHandler}
-              />
+
+      <div className={classes.container}>
+        <div className={classes.sub_container}>
+          <form onSubmit={submitHandler} className={classes.contact_form}>
+            <div className="row mb-3 d-flex justify-content-center ">
+              <div className="col-xs-6">
+                <label htmlFor="name" className="col-sm-2 col-form-label  ">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control py-2"
+                  id="name"
+                  value={name}
+                  onChange={nameHandler}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row mb-3 d-flex justify-content-center">
-            <div className="col-xs-6">
-              <label htmlFor="email" className="col-sm-2 col-form-label fs-5">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control py-2"
-                id="email"
-                value={email}
-                onChange={mailHandler}
-              />
+            <div className="row mb-3 d-flex justify-content-center ">
+              <div className="col-xs-6">
+                <label htmlFor="email" className="col-sm-2 col-form-label ">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control py-2"
+                  id="email"
+                  value={email}
+                  onChange={mailHandler}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row mb-3 d-flex justify-content-center">
-            <div className="col-xs-6">
-              <label htmlFor="phone" className="col-sm-2 col-form-label fs-5">
-                PhoneNumber
-              </label>
-              <input
-                type="number"
-                className="form-control py-2"
-                id="phone"
-                value={phone}
-                onChange={phoneHandler}
-              />
+            <div className="row mb-3 d-flex justify-content-center ">
+              <div className="col-xs-6">
+                <label htmlFor="phone" className="col-sm-2 col-form-label ">
+                  PhoneNumber
+                </label>
+                <input
+                  type="number"
+                  className="form-control py-2"
+                  id="phone"
+                  value={phone}
+                  onChange={phoneHandler}
+                />
+              </div>
             </div>
-          </div>
-          <div className="text-center mt-4">
-            <button
-              type="submit"
-              className="btn btn-success w-100 my-2 py-2  fs-5 mt-4"
-            >
-              Submit
+            <div className="text-center mt-4">
+              <button type="submit" className={classes.submit}>
+                Submit
+              </button>
+            </div>
+          </form>
+          <div className={classes.contact}>
+            <h1>Lets Talk About Everything</h1>
+            <p style={{ fontSize: "20px" }}>
+              For Any Queries Contact us by filling the form...we will get back
+              to you as earliest
+            </p>
+            <button type="submit" className={classes.learnmore_btn}>
+              learn more
             </button>
           </div>
-        </form>
+        </div>
       </div>
-
       <Footer></Footer>
     </Fragment>
   );

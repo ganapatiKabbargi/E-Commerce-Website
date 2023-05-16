@@ -1,0 +1,46 @@
+.nav_item {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 45px;
+  font-size: 20px;
+}
+.nav_item:hover {
+  color: rgb(185, 206, 50);
+}
+.icon {
+  width: 1.8rem;
+  height: 1.3rem;
+  margin-bottom: 10px;
+  color: white;
+}
+.icon:hover {
+  color: rgb(185, 206, 50);
+}
+.badge {
+  background-color: rgb(224, 195, 85);
+  padding: 0px 6px;
+
+  margin-bottom: 2.6rem;
+  font-size: 13px;
+  border-radius: 5px;
+  color: white;
+}
+.button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+a:hover,
+a.active {
+  color: rgb(185, 206, 50);
+}

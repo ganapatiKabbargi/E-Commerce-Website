@@ -6,7 +6,7 @@ import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../Store/cartContext";
 import { NavLink, useHistory } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-import "./Navbar.css";
+import classes from "./Navbar.module.css";
 
 const NavigationBar = (props) => {
   const cartCtx = useContext(CartContext);
@@ -31,10 +31,10 @@ const NavigationBar = (props) => {
     <Fragment>
       <Navbar
         variant="dark"
-        className="p-2 shadow   "
+        className="p-2 shadow"
         fixed="top"
-        style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
-        // style={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
+        // style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
+        style={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
       >
         <Container>
           <Navbar.Brand href="#home" className="fs-2">
@@ -42,60 +42,68 @@ const NavigationBar = (props) => {
           </Navbar.Brand>
           <Nav className="ms-auto">
             <NavLink
-              activeClassName="active"
+              activeClassName={classes.active}
               to="/home"
-              className="me-5 nav-item fs-5 "
+              className={classes.nav_item}
             >
               Home
             </NavLink>
 
             <NavLink
-              activeClassName="active"
+              activeClassName={classes.active}
               to="/store"
-              className="me-5 nav-item fs-5 "
+              className={classes.nav_item}
             >
               Store
             </NavLink>
 
             <NavLink
-              activeClassName="active"
+              activeClassName={classes.active}
               to="/about"
-              className="me-5 nav-item fs-5 "
+              className={classes.nav_item}
             >
               About
             </NavLink>
 
             <NavLink
-              activeClassName="active"
+              activeClassName={classes.active}
               to="/contact"
-              className="me-5 nav-item fs-5 "
+              className={classes.nav_item}
             >
               Contact Us
             </NavLink>
             {!isLogedIn && (
               <NavLink
-                activeClassName="active"
+                activeClassName={classes.active}
                 to="/login"
-                className="me-5 nav-item fs-5 "
+                className={classes.nav_item}
               >
                 Login
               </NavLink>
             )}
           </Nav>
 
-          {isLogedIn && (
+          {/* {isLogedIn && (
             <button className="button" onClick={cartHandler}>
               <span className="icon">
                 <CartIcon />
               </span>
               <div className="badge ">{quantity}</div>
             </button>
+          )} */}
+          {isLogedIn && (
+            <NavLink to="/cart" className={classes.button}>
+              <span className={classes.icon}>
+                <CartIcon />
+              </span>
+              <div className={classes.badge}>{quantity}</div>
+            </NavLink>
           )}
           {isLogedIn && (
             <NavLink
-              activeClassName="active"
+              activeClassName={classes.active}
               to="/login"
-              className="ms-4 nav-item fs-5 "
+              className={classes.nav_item}
               onClick={logoutHandler}
             >
               <FiLogOut></FiLogOut>

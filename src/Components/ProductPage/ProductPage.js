@@ -8,12 +8,15 @@ import CartContext from "../../Store/cartContext";
 import NavigationBar from "../Navbar/Navbar";
 import Header from "../Navbar/Header";
 import Footer from "../Footer/Footer";
+import { useHistory } from "react-router-dom";
 
 function ProductPage(props) {
   const email = localStorage.getItem("email");
   const cartCtx = useContext(CartContext);
+  const history = useHistory();
   const clickHandler = () => {
-    cartCtx.showCart();
+    // cartCtx.showCart();
+    history.push("/cart");
   };
   const ctx = useContext(CartContext);
 
@@ -26,9 +29,9 @@ function ProductPage(props) {
       <NavigationBar></NavigationBar>
       <Header></Header>
       <Container>
-        <Title>Merchandise</Title>
+        <Title>Fashion and Clothing</Title>
         <Row>
-          {ctx.productArr.map((product) => {
+          {ctx.productArr.slice(0, 4).map((product) => {
             return (
               <Col xs={3}>
                 <ProductCard
@@ -37,6 +40,58 @@ function ProductPage(props) {
                   price={product.price}
                   imageUrl={product.imageUrl}
                   id={product.id}
+                  colors={product.colors}
+                ></ProductCard>
+              </Col>
+            );
+          })}
+        </Row>
+        <Title>Beauty and Cosmetics</Title>
+        <Row>
+          {ctx.productArr.slice(4, 8).map((product) => {
+            return (
+              <Col xs={3}>
+                <ProductCard
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  imageUrl={product.imageUrl}
+                  id={product.id}
+                  colors={product.colors}
+                ></ProductCard>
+              </Col>
+            );
+          })}
+        </Row>
+        <Title>Electronics</Title>
+        <Row>
+          {ctx.productArr.slice(8, 12).map((product) => {
+            return (
+              <Col xs={3}>
+                <ProductCard
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  imageUrl={product.imageUrl}
+                  id={product.id}
+                  colors={product.colors}
+                ></ProductCard>
+              </Col>
+            );
+          })}
+        </Row>
+        <Title>Furniture and decor</Title>
+        <Row>
+          {ctx.productArr.slice(12, 16).map((product) => {
+            return (
+              <Col xs={3}>
+                <ProductCard
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  imageUrl={product.imageUrl}
+                  id={product.id}
+                  colors={product.colors}
                 ></ProductCard>
               </Col>
             );
@@ -46,7 +101,8 @@ function ProductPage(props) {
       <div className="d-flex justify-content-center p-3 mt-4">
         <button
           className="btn text-white"
-          style={{ backgroundColor: "#ff1212" }}
+          // style={{ backgroundColor: "#ff1212" }}
+          style={{ backgroundColor: "orange" }}
           onClick={clickHandler}
         >
           See the cart

@@ -1,113 +1,95 @@
-import React, { useContext, Fragment } from "react";
-import CartItem from "./CartItem";
-import Modal from "../UI/Modal/Modal";
+import React, { useState, useContext } from "react";
 import CartContext from "../../Store/cartContext";
-import "./Cart.css";
+import CI from "./CartItem";
+import NavigationBar from "../Navbar/Navbar";
+import cartModule from "./Cart.module.css";
+import CartIcon from "./CartIcon";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import CartSummary from "./CartSummary";
 
-const Cart = (props) => {
-  const CartCtx = useContext(CartContext);
-  let cartIsEmpty = CartCtx.products.length === 0 ? true : false;
-
-  const cartCloseHandler = () => {
-    CartCtx.hideCart();
-  };
-
-  const backdropHandler = () => {
-    CartCtx.hideCart();
-  };
-
-  const purchaseHandler = () => {
-    CartCtx.purchaseProduct();
-  };
-
+const C = () => {
+  const cartCtx = useContext(CartContext);
+  const history = useHistory();
+  console.log(history);
+  let cartIsEmpty = cartCtx.products.length === 0 ? true : false;
   let total = 0;
-  let cartItems = CartCtx.products.map((product) => {
+  let items = 0;
+  const cartItems = cartCtx.products.map((product) => {
     total = total + product.price * product.quantity;
+    items++;
     return (
-      <CartItem
+      <CI
         key={product.id}
         id={product.id}
         image={product.imageUrl}
         title={product.title}
         price={product.price}
         quantity={product.quantity}
-      ></CartItem>
+      ></CI>
     );
   });
 
-  return (
-    <Fragment>
-      <Modal onConfirm={backdropHandler} />
+  const storeHandler = () => {
+    history.push("/store");
+  };
 
-      <div
-        className={CartCtx.cart ? "cart p-4 text-white" : "hide"}
-        style={{
-          background: "linear-gradient(to top right , #ffe000,#799f0c",
-        }}
-      >
-        <div className="d-flex justify-content-between">
-          <em className="fs-4 fw-bold">Welcome</em>
-          <button className="btn btn-outline-light" onClick={cartCloseHandler}>
-            {" "}
-            X
+  return (
+    <React.Fragment>
+      <NavigationBar />
+      {cartIsEmpty ? (
+        <div className={cartModule.eCart_container}>
+          <div className={cartModule.eCart_icon}>
+            <CartIcon />
+          </div>
+          <span style={{ fontSize: "36px" }}>Your Cart is Currently Empty</span>
+          <p className={cartModule.eCart_p}>
+            Before proceed to checkout you must add some products to your
+            shopping cart. You will find a lot of interesting products on our
+            "Shop" page.
+          </p>
+          <button className={cartModule.store_btn} onClick={storeHandler}>
+            Start Shopping
           </button>
         </div>
-        <h1 className=" text-center mb-4">Cart</h1>
-        {cartIsEmpty && (
-          <div
-            className="text-center fw-2 mt-5 p-2  shadow rounded"
-            style={{ background: "linear-gradient(to right , #c31432,#240b36" }}
-          >
-            <h4>Your Cart Is Empty</h4>
-            <h5>Please Add Products To Purchase</h5>
-          </div>
-        )}
-        {!cartIsEmpty && (
-          <div>
-            <div
-              className="pb-2 mb-2 border border-2 rounded"
-              style={{
-                borderBottom: "2px solid ",
-                background: "linear-gradient(to right , #283c86,#45a247",
-              }}
-            >
-              <span className="fs-4 ms-4 me-5">Item</span>
-              <span className="fs-4 ms-5">Price</span>
-              <span className="fs-4 ms-5">Quantity</span>
-            </div>
-            <div
-              className="border border-2 p-2 rounded shadow"
-              style={{
-                background: "linear-gradient(to right , #283c86,#45a247",
-                height: "340px",
-                overflow: "scroll",
-              }}
-            >
-              {cartItems}
-            </div>
-
-            <div
-              className="text-end mt-4 rounded  p-2 shadow "
-              style={{
-                background: "linear-gradient(to right , #283c86,#45a247",
-              }}
-            >
-              <h4>Total Amount : {total}</h4>
-            </div>
-            <div className="text-center mt-5">
-              <button
-                className="btn text-light"
-                onClick={purchaseHandler}
-                style={{ backgroundColor: "#ff1d00" }}
+      ) : (
+        <div className={cartModule.cart_container}>
+          <div className={cartModule.cartD_container}>
+            <section className="w-100 pt-5">
+              <h3
+                style={{
+                  fontFamily: "brush-script",
+                }}
+                className="text-center mb-4 "
               >
-                Purchase
-              </button>
-            </div>
+                YOUR BAG ({items} Items)
+              </h3>
+              <nav className={cartModule.cartNav}>
+                <span
+                  style={{
+                    marginLeft: "130px",
+                    marginRight: "240px",
+                  }}
+                >
+                  ITEM
+                </span>
+                <span
+                  style={{
+                    marginRight: " 110px",
+                  }}
+                >
+                  PRICE
+                </span>
+                <span style={{ marginRight: "150px" }}>QUANTITY</span>
+                <span>TOTAL</span>
+              </nav>
+              {cartItems}
+            </section>
           </div>
-        )}
-      </div>
-    </Fragment>
+          <CartSummary total={total} />
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 
-export default Cart;
+export default C;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ErrorModal.css";
+import classes from "./ErrorModal.module.css";
 import Modal from "./Modal";
 
 const ErrorModal = (props) => {
@@ -21,9 +21,9 @@ const ErrorModal = (props) => {
   return (
     <React.Fragment>
       <Modal />
-      <div className="errorCard">
-        <div className="header">
-          <div className="image">
+      <div className={classes.errorCard}>
+        <div className={classes.header}>
+          <div className={classes.image}>
             {props.message.includes("Authentication") ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,15 +56,16 @@ const ErrorModal = (props) => {
               </svg>
             )}
           </div>
-          <div className="content">
-            <span className="titl">{props.message}</span>
-            <p className="message">{errormessage}</p>
+          <div className={classes.content}>
+            <span className={classes.title}>{props.message}</span>
+            <p className={classes.message}>{errormessage}</p>
           </div>
-          <div className="act">
-            {/* <button className="desactivate" type="button">
-            Desactivate
-          </button> */}
-            <button className="cancel" type="button" onClick={clickHandler}>
+          <div className={classes.action}>
+            <button
+              className={classes.cancel}
+              type="button"
+              onClick={clickHandler}
+            >
               OK
             </button>
           </div>
