@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import { FaCartPlus } from "react-icons/fa";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BsFillStarFill } from "react-icons/bs";

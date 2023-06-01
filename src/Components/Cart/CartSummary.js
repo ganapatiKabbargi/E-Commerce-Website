@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./CartSummary.module.css";
 
@@ -106,7 +106,6 @@ const CartSummary = (props) => {
           </button>
           <button
             className={classes.shopping}
-            
             onClick={continueShoppingHandler}
           >
             {" "}

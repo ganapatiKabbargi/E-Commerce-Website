@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import CI from "./CartItem";
 import NavigationBar from "../Navbar/Navbar";
 import cartModule from "./Cart.module.css";

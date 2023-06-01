@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import "./Cart.module.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 

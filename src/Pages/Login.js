@@ -2,7 +2,7 @@ import React, { useContext, useRef, Fragment, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import NavigationBar from "../Components/Navbar/Navbar";
-import CartContext from "../Store/cartContext";
+import CartContext from "../Store/CartContext";
 import Loader from "../Components/UI/Modal/Loader";
 import ErrorModal from "../Components/UI/Modal/ErrorModal";
 import classes from "./Login.module.css";

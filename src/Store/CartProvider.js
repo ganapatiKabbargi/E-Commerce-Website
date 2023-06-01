@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import CartContext from "./cartContext";
+import CartContext from "./CartContext";
 import axios from "axios";
 
 const CartProvider = (props) => {

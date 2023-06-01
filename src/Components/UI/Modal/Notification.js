@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CartContext from "../../../Store/cartContext";
+import CartContext from "../../../Store/CartContext";
 import classes from "./Notification.module.css";
 
 const Notification = () => {

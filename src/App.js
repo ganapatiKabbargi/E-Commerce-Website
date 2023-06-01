@@ -7,7 +7,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 // import Contact from "./Pages/Contact";
 // import ProductDetail from "./Pages/ProductDetail";
 import Login from "./Pages/Login";
-import CartContext from "./Store/cartContext";
+import CartContext from "./Store/CartContext";
 import Notification from "./Components/UI/Modal/Notification";
 import ErrorModal from "./Components/UI/Modal/ErrorModal";
 import axios from "axios";

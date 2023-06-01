@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import CartIcon from "../Cart/CartIcon";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import { NavLink, useHistory } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import classes from "./Navbar.module.css";

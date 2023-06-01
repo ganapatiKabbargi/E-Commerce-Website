@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import NavigationBar from "../Components/Navbar/Navbar";
-import CartContext from "../Store/cartContext";
+import CartContext from "../Store/CartContext";
 import ProductOffer from "../Components/ProductOffer/ProductOffer";
 import ProductSeller from "../Components/ProductSeller/ProductSeller";
 import RatingAndReview from "../Components/RatingAndReview/RatingAndReview";

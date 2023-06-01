@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 
 const ProductDetailImage = () => {
   const ctx = useContext(CartContext);

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import { BsFillStarFill } from "react-icons/bs";
 
 const ProductPriceDetail = () => {

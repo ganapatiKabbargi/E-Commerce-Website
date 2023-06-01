@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProductCard from "../ProductCard/ProductCard";
 import Title from "../Title/Title";
-import CartContext from "../../Store/cartContext";
+import CartContext from "../../Store/CartContext";
 import NavigationBar from "../Navbar/Navbar";
 import Header from "../Navbar/Header";
 import Footer from "../Footer/Footer";
