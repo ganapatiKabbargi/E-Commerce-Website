@@ -62,7 +62,7 @@ const CI = (props) => {
           <button
             onClick={removeProductHandler}
             className="border me-1 border-2 rounded px-2 text-light "
-            style={{ backgroundColor: "rgb(224, 195, 85)" }}
+            style={{ backgroundColor: "rgb(139, 181, 190)" }}
           >
             -
           </button>
@@ -70,7 +70,7 @@ const CI = (props) => {
           <button
             onClick={addProductHandler}
             className="border me-1 border-2 rounded px-2 text-light"
-            style={{ backgroundColor: "rgb(224, 195, 85)" }}
+            style={{ backgroundColor: "rgb(139, 181, 190)" }}
           >
             +
           </button>

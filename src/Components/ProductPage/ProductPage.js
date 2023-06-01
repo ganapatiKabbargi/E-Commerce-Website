@@ -33,7 +33,7 @@ function ProductPage(props) {
         <Row>
           {ctx.productArr.slice(0, 4).map((product) => {
             return (
-              <Col xs={3}>
+              <Col xs={3} key={product.id}>
                 <ProductCard
                   key={product.id}
                   title={product.title}
@@ -50,7 +50,7 @@ function ProductPage(props) {
         <Row>
           {ctx.productArr.slice(4, 8).map((product) => {
             return (
-              <Col xs={3}>
+              <Col xs={3} key={product.id}>
                 <ProductCard
                   key={product.id}
                   title={product.title}
@@ -67,7 +67,7 @@ function ProductPage(props) {
         <Row>
           {ctx.productArr.slice(8, 12).map((product) => {
             return (
-              <Col xs={3}>
+              <Col xs={3} key={product.id}>
                 <ProductCard
                   key={product.id}
                   title={product.title}
@@ -84,7 +84,7 @@ function ProductPage(props) {
         <Row>
           {ctx.productArr.slice(12, 16).map((product) => {
             return (
-              <Col xs={3}>
+              <Col xs={3} key={product.id}>
                 <ProductCard
                   key={product.id}
                   title={product.title}
@@ -100,12 +100,12 @@ function ProductPage(props) {
       </Container>
       <div className="d-flex justify-content-center p-3 mt-4">
         <button
-          className="btn text-white"
+          className="btn px-5 py-2 border border-2 border-primary rounded-5 fw-bold"
           // style={{ backgroundColor: "#ff1212" }}
-          style={{ backgroundColor: "orange" }}
+          style={{ color: "rgba(17, 24, 39, 1)" }}
           onClick={clickHandler}
         >
-          See the cart
+          Go to cart
         </button>
       </div>
       <Footer></Footer>

@@ -29,8 +29,9 @@
 .cart_container {
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
-  height: 90vh;
+  /* margin-top: 80px; */
+  padding-top: 80px;
+  height: 100vh;
 
   z-index: 100;
 }
@@ -42,7 +43,7 @@
   width: 100%;
   padding: 10px;
   font-weight: bold;
-  background-color: rgb(224, 195, 85);
+  background-color: rgb(139, 181, 190);
   color: white;
 }
 .cartNav span {

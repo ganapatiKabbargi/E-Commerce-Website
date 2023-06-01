@@ -29,8 +29,27 @@
   border-radius: 9999px;
 }
 
+.image_success {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #baeabf;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+}
+
 .image svg {
   color: #dc2626;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.image_success svg {
+  color: #6cdc26;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -42,6 +61,13 @@
 
 .title {
   color: #fa4e4e;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.title_success {
+  color: #3d992c;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;

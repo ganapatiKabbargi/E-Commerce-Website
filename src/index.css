@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #eed9c4;
 }
+* {
+  box-sizing: border-box;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

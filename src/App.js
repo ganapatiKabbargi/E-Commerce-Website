@@ -13,7 +13,7 @@ import ErrorModal from "./Components/UI/Modal/ErrorModal";
 import axios from "axios";
 import NavigationBar from "./Components/Navbar/Navbar";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Modal from "./Components/UI/Modal/Modal";
+import Loader from "./Components/UI/Modal/Loader";
 
 // adding lazy loading
 const LazyProductPage = React.lazy(() =>
@@ -33,7 +33,7 @@ function App() {
 
   const userDetailSubmitHandler = (user) => {
     axios.post(
-      "https://react-http-practice-8c294-default-rtdb.firebaseio.com/userDetails.json",
+      "https://e-commerce-app-eabe3-default-rtdb.firebaseio.com/userDetails.json",
       user
     );
   };
@@ -57,23 +57,23 @@ function App() {
         </Route>
         {isLogedIn && (
           <Route path="/cart">
-            <React.Suspense fallback="CartLoading">
+            <React.Suspense fallback={<Loader />}>
               <LazyCart></LazyCart>
             </React.Suspense>
           </Route>
         )}
         <Route path="/home">
-          <React.Suspense fallback="Fetching Home Page">
+          <React.Suspense fallback={<Loader />}>
             <LazyHome></LazyHome>
           </React.Suspense>
         </Route>
         <Route path="/about">
-          <React.Suspense fallback="Fetching About Page">
+          <React.Suspense fallback={<Loader />}>
             <LazyAbout></LazyAbout>
           </React.Suspense>
         </Route>
         <Route path="/contact">
-          <React.Suspense fallback="Fetching Contact Page">
+          <React.Suspense fallback={<Loader />}>
             <LazyContact userDetail={userDetailSubmitHandler}></LazyContact>
           </React.Suspense>
         </Route>
@@ -84,7 +84,7 @@ function App() {
         </Route> */}
         <Route path="/store">
           {isLogedIn && (
-            <React.Suspense fallback="product page Loading">
+            <React.Suspense fallback={<Loader />}>
               <LazyProductPage></LazyProductPage>
             </React.Suspense>
           )}
@@ -101,7 +101,7 @@ function App() {
         </Route>
 
         <Route path="/product_detail/:productId">
-          <React.Suspense fallback="Fetching product detail">
+          <React.Suspense fallback={<Loader />}>
             <LazyProductDetail></LazyProductDetail>
           </React.Suspense>
         </Route>

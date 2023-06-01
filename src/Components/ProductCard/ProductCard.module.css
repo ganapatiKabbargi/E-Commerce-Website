@@ -93,3 +93,7 @@
   border-radius: 2px;
   font-weight: 600;
 }
+.bankOffer {
+  display: flex;
+  justify-content: space-between;
+}

@@ -6,7 +6,8 @@
 }
 .container {
   padding-top: 170px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
+  height: 87.5vh;
 }
 .sub_container {
   display: flex;

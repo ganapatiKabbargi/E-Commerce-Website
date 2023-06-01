@@ -16,6 +16,7 @@ const Login = () => {
   const cartCtx = useContext(CartContext);
   const history = useHistory();
 
+  console.log("Login Running...");
   const submitHandler = (e) => {
     e.preventDefault();
     cartCtx.showLoader();
@@ -24,7 +25,7 @@ const Login = () => {
       if (isLogin) {
         try {
           const response = await axios.post(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJ4c7guHYDmFFnM91xhSVpCmFewLUrwqA",
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAb-XnVHnwLNHJWXzJyshFlnfr3QTtD73s",
             {
               email: mail,
               password: password,
@@ -57,7 +58,7 @@ const Login = () => {
         if (password === confirmPassword) {
           try {
             const response = await axios.post(
-              "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBJ4c7guHYDmFFnM91xhSVpCmFewLUrwqA",
+              "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAb-XnVHnwLNHJWXzJyshFlnfr3QTtD73s",
               {
                 email: mail,
                 password: password,

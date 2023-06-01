@@ -1,11 +1,11 @@
 .nav_item {
   text-decoration: none;
   color: #fff;
-  margin-left: 45px;
+  margin-left: 65px;
   font-size: 20px;
 }
 .nav_item:hover {
-  color: rgb(185, 206, 50);
+  color: rgb(224, 195, 85);
 }
 .icon {
   width: 1.8rem;
@@ -37,10 +37,10 @@
   border-radius: 25px;
   font-weight: bold;
   text-decoration: none;
-  margin-left: 30px;
+  margin-left: 65px;
 }
 
 a:hover,
 a.active {
-  color: rgb(185, 206, 50);
+  color: rgb(224, 195, 85);
 }

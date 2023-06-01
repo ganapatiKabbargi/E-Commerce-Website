@@ -43,7 +43,8 @@ function ProductCard(props) {
           </div>
 
           <span style={{ color: "grey" }}>
-            ({Math.floor(Math.random() * 1000)})
+            {/* ({Math.floor(Math.random() * 1000)}) */}
+            {rating}
           </span>
         </div>
 
@@ -55,19 +56,20 @@ function ProductCard(props) {
         <div>
           <div className={classes.delivery}>Free Delivery</div>
         </div>
-        <div>
+        <div className={classes.bankOffer}>
           <div className={classes.offer}>Bank Offer</div>
+          <div className={classes.add}>
+            {/* <h4>Price : {props.price}</h4> */}
+            <button
+              className="btn text-light  "
+              style={{ backgroundColor: "#FF9F01", zIndex: 3000 }}
+              onClick={clickHandler}
+            >
+              Add to cart <FaCartPlus />
+            </button>
+          </div>
         </div>
-        <div className={classes.add}>
-          {/* <h4>Price : {props.price}</h4> */}
-          <button
-            className="btn text-light  "
-            style={{ backgroundColor: "#388E3C", zIndex: 3000 }}
-            onClick={clickHandler}
-          >
-            Add to cart <FaCartPlus />
-          </button>
-        </div>
+
         <div className={classes.like}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -78,9 +80,9 @@ function ProductCard(props) {
             <path
               d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z"
               fill="grey"
-              class="eX72wL"
+              className="eX72wL"
               stroke="grey"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               opacity=".9"
             ></path>
           </svg>

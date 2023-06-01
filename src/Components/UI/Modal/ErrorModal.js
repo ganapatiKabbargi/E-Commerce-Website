@@ -23,7 +23,13 @@ const ErrorModal = (props) => {
       <Modal />
       <div className={classes.errorCard}>
         <div className={classes.header}>
-          <div className={classes.image}>
+          <div
+            className={
+              props.message.includes("Succesfully")
+                ? classes.image_success
+                : classes.image
+            }
+          >
             {props.message.includes("Authentication") ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +45,29 @@ const ErrorModal = (props) => {
                   d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"
                   id="mainIconPathAttribute"
                 ></path>{" "}
+              </svg>
+            ) : props.message.includes("Succesfully") ? (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    d="M20 7L9.00004 18L3.99994 13"
+                    stroke="#000000"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>{" "}
+                </g>
               </svg>
             ) : (
               <svg
@@ -57,7 +86,15 @@ const ErrorModal = (props) => {
             )}
           </div>
           <div className={classes.content}>
-            <span className={classes.title}>{props.message}</span>
+            <span
+              className={
+                props.message.includes("Succesfully")
+                  ? classes.title_success
+                  : classes.title
+              }
+            >
+              {props.message}
+            </span>
             <p className={classes.message}>{errormessage}</p>
           </div>
           <div className={classes.action}>
