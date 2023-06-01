@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import NavigationBar from "../Components/Navbar/Navbar";
 import CartContext from "../Store/CartContext";
 import ProductOffer from "../Components/ProductOffer/ProductOffer";
@@ -11,7 +11,6 @@ import ProductPriceDetail from "../Components/ProductPriceDetail/ProductPriceDet
 const ProductDetail = () => {
   const ctx = useContext(CartContext);
   const params = useParams();
-  const history = useHistory();
 
   const product = ctx.productArr.filter((p) => {
     return p.id === params.productId;
