@@ -18,10 +18,6 @@ const ProductDetail = () => {
   });
   const [matchedProduct] = product;
 
-  const closePageHandler = () => {
-    history.push("/store");
-  };
-
   return (
     <Fragment>
       <NavigationBar></NavigationBar>

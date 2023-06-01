@@ -166,9 +166,7 @@ const Login = () => {
               )}
               {isLogin && (
                 <div className={classes.forgot}>
-                  <a rel="noopener noreferrer" href="#">
-                    Forgot Password ?
-                  </a>
+                  <button className={classes.signUp}>Forgot Password ?</button>
                 </div>
               )}
             </div>

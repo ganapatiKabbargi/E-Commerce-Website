@@ -5,7 +5,7 @@ import classes from "./Header.module.css";
 const Header = () => {
   return (
     <header>
-      <img src={bg} className={classes.img}></img>
+      <img src={bg} className={classes.img} alt="header image"></img>
       <div className={classes.heading}>
         <h1>E-Commerce-Store</h1>
       </div>
