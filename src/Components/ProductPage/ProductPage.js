@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,8 +11,6 @@ import Footer from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
 
 function ProductPage(props) {
-  const email = localStorage.getItem("email");
-  const cartCtx = useContext(CartContext);
   const history = useHistory();
   const clickHandler = () => {
     // cartCtx.showCart();

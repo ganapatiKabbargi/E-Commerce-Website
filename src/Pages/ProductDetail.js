@@ -32,11 +32,6 @@ const ProductDetail = () => {
         <ProductDetailImage />
 
         <div className="" style={{ overflow: "scroll", width: "950px" }}>
-          {/* <div className="d-flex justify-content-end">
-            <button className="btn fs-5 fw-bold" onClick={closePageHandler}>
-              X
-            </button>
-          </div> */}
           <div className="p-4  border shadow rounded bg-white ">
             <p style={{ fontSize: "22px" }}>{matchedProduct.title}</p>
             <ProductPriceDetail />

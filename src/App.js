@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-// import ProductPage from "./Components/ProductPage/ProductPage";
-// import Cart from "./Components/Cart/Cart";
-// import About from "./Pages/About";
-// import Home from "./Pages/Home";
-// import Contact from "./Pages/Contact";
-// import ProductDetail from "./Pages/ProductDetail";
 import Login from "./Pages/Login";
 import CartContext from "./Store/CartContext";
 import Notification from "./Components/UI/Modal/Notification";
@@ -44,13 +38,6 @@ function App() {
   return (
     <div>
       {cartCtx.note && <Notification></Notification>}
-      {/* {isLogedIn && (
-        <Route path="/cart">
-          <React.Suspense fallback="CartLoading">
-            <LazyCart></LazyCart>
-          </React.Suspense>
-        </Route>
-      )} */}
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home"></Redirect>

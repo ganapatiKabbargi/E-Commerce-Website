@@ -41,6 +41,7 @@ const CI = (props) => {
           <img
             style={{ width: "80px", height: "80px" }}
             src={props.image}
+            alt="product_image"
             onClick={viewProductHandler}
           />
           <div

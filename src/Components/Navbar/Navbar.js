@@ -13,10 +13,6 @@ const NavigationBar = (props) => {
   const history = useHistory();
   const isLogedIn = cartCtx.isLogedIn;
 
-  const cartHandler = () => {
-    cartCtx.showCart();
-  };
-
   const logoutHandler = () => {
     cartCtx.logout();
     history.replace("/login");
@@ -33,7 +29,6 @@ const NavigationBar = (props) => {
         variant="dark"
         className="p-2 shadow"
         fixed="top"
-        // style={{ background: "linear-gradient(to right , #283c86,#45a247" }}
         style={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
       >
         <Container>
@@ -83,14 +78,6 @@ const NavigationBar = (props) => {
             )}
           </Nav>
 
-          {/* {isLogedIn && (
-            <button className="button" onClick={cartHandler}>
-              <span className="icon">
-                <CartIcon />
-              </span>
-              <div className="badge ">{quantity}</div>
-            </button>
-          )} */}
           {isLogedIn && (
             <NavLink to="/cart" className={classes.button}>
               <span className={classes.icon}>

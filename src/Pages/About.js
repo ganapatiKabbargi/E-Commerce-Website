@@ -35,7 +35,6 @@ const About = () => {
                   </p>
                   <a
                     href="https://en.wikipedia.org/wiki/E-commerce"
-                    target="_blank"
                     className={classes.link}
                   >
                     learn more
@@ -67,7 +66,6 @@ const About = () => {
                   </p>
                   <a
                     href="https://en.wikipedia.org/wiki/E-commerce"
-                    target="_blank"
                     // className="btn my-2 py-2  fs-5 mt-4"
                     className={classes.link}
                   >

@@ -32,6 +32,7 @@ const ProductOffer = () => {
                   width: "18px",
                   height: "18px",
                 }}
+                alt="flipcart tag"
                 // class="_3HLfAg"
               />
               <li style={{ listStyleType: "none", display: "inline" }}>

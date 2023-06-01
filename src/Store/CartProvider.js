@@ -145,7 +145,6 @@ const CartProvider = (props) => {
   const [note, setNote] = useState(false);
   const [title, setTitle] = useState("");
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState("");
 
   const isLogedIn = !!token;
 

@@ -17,7 +17,11 @@ const Home = () => {
     <Fragment>
       <NavigationBar></NavigationBar>
       <div style={{ position: "relative" }}>
-        <img src={storeImage} className={classes.homeImg}></img>
+        <img
+          src={storeImage}
+          className={classes.homeImg}
+          alt="e commerce shop"
+        ></img>
         <div className={classes.heading}>
           <div>A New Online Shop Experience</div>
 

@@ -3,13 +3,11 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import CartContext from "../../Store/CartContext";
 import { FaCartPlus } from "react-icons/fa";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BsFillStarFill } from "react-icons/bs";
 import classes from "./ProductCard.module.css";
 
 function ProductCard(props) {
   const cartCtx = useContext(CartContext);
-  const history = useHistory();
   const [rating, setRating] = useState();
 
   const clickHandler = () => {
