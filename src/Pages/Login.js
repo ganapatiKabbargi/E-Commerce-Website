@@ -220,6 +220,14 @@ const Login = () => {
               {isLogin ? "Sign Up" : "Sign In"}
             </button>
           </p>
+          <hr />
+          <div>
+            <p className={classes.signup}> Login Credentials</p>
+            <p className={classes.signup}>
+              {" "}
+              Email : ecommerce@shop.com Password : 123456789
+            </p>
+          </div>
         </div>
       )}
     </Fragment>
