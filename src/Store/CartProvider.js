@@ -229,7 +229,7 @@ const CartProvider = (props) => {
     let pdid = pd.uId;
 
     const response = await axios.delete(
-      `https://ecommerce-341cf-default-rtdb.firebaseio.com/ccart${Email}/${pdid}.json`
+      `https://ecommerce-341cf-default-rtdb.firebaseio.com/cart${Email}/${pdid}.json`
     );
     if (response.status === 200) {
       getProducts(Email);
@@ -263,7 +263,7 @@ const CartProvider = (props) => {
   const purchaseProductHandler = async () => {
     alert("Thank you for purchasing");
     await axios.delete(
-      `https://ecommerce-341cf-default-rtdb.firebaseio.com/ccart${Email}.json`
+      `https://ecommerce-341cf-default-rtdb.firebaseio.com/cart${Email}.json`
     );
     setProducts([]);
   };
