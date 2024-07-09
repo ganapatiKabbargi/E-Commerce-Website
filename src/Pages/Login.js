@@ -25,7 +25,7 @@ const Login = () => {
       if (isLogin) {
         try {
           const response = await axios.post(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByFcyVEm6gp9dmLq-kpRPWW0KmibsNdSo",
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVTUMc8qzfjQItSQT9FqL1BrnQ-eO9pLY",
             {
               email: mail,
               password: password,
@@ -58,7 +58,7 @@ const Login = () => {
         if (password === confirmPassword) {
           try {
             const response = await axios.post(
-              "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByFcyVEm6gp9dmLq-kpRPWW0KmibsNdSo",
+              "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBVTUMc8qzfjQItSQT9FqL1BrnQ-eO9pLY",
               {
                 email: mail,
                 password: password,
