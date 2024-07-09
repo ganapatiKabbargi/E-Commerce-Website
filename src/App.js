@@ -27,7 +27,7 @@ function App() {
 
   const userDetailSubmitHandler = (user) => {
     axios.post(
-      "https://e-commerce-app-eabe3-default-rtdb.firebaseio.com/userDetails.json",
+      "https://e-commerce-app-880f6-default-rtdb.firebaseio.com/userDetails.json",
       user
     );
   };
