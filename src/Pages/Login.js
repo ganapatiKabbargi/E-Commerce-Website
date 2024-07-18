@@ -13,6 +13,7 @@ const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [isLogin, setIsLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const cartCtx = useContext(CartContext);
   const history = useHistory();
 
@@ -99,6 +100,10 @@ const Login = () => {
     setError("");
   };
 
+  const passwordToggleHandler = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <Fragment>
       <NavigationBar></NavigationBar>
@@ -128,17 +133,26 @@ const Login = () => {
             </div>
             <div className={classes.input_group}>
               <label htmlFor="password">Password *</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder=""
-                pattern="^.{8,32}$"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
+              <div className={classes.inputWrapper}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder=""
+                  pattern="^.{8,32}$"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <button
+                  type="button"
+                  className={classes.passwordToggle_btn}
+                  onClick={passwordToggleHandler}
+                >
+                  {showPassword ? "hide" : "show"}
+                </button>
+              </div>
               <span className={classes.validation}>
                 Password must contain atleast 8 letters
               </span>
