@@ -14,6 +14,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const cartCtx = useContext(CartContext);
   const history = useHistory();
 
@@ -103,6 +104,9 @@ const Login = () => {
   const passwordToggleHandler = () => {
     setShowPassword((prev) => !prev);
   };
+  const confirmPasswordToggleHandler = () => {
+    setShowConfirmPassword((prev) => !prev);
+  };
 
   return (
     <Fragment>
@@ -162,17 +166,26 @@ const Login = () => {
                   style={{ marginBottom: "10px" }}
                 >
                   <label htmlFor="Confirm password">Confirm Password *</label>
-                  <input
-                    type="password"
-                    name="Confirm password"
-                    id="password"
-                    placeholder=""
-                    pattern="^.{8,32}$"
-                    value={confirmPassword}
-                    onChange={(e) => {
-                      setConfirmPassword(e.target.value);
-                    }}
-                  />
+                  <div className={classes.inputWrapper}>
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="Confirm password"
+                      id="password"
+                      placeholder=""
+                      pattern="^.{8,32}$"
+                      value={confirmPassword}
+                      onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className={classes.passwordToggle_btn}
+                      onClick={confirmPasswordToggleHandler}
+                    >
+                      {showConfirmPassword ? "hide" : "show"}
+                    </button>
+                  </div>
                   <span className={classes.validation}>
                     Password must contain atleast 8 letters
                   </span>
